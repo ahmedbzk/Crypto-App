@@ -1,21 +1,59 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <img src="assets/logo.png" style="border-bottom: 1px solid black;">
+
+  <!-- REFRESHER -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="crescent"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- 10 COİN LİSTELEME -->
+  <div style="margin-left: 5%; margin-top: 5%; font-size: 20px;">
+
   </div>
+  <ion-list>
+    <ion-item *ngFor="let info of tencoininfo.slice(0,more)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+      <ion-avatar slot="start">
+        <img src="{{info.image}}" />
+      </ion-avatar>
+      
+      <ion-label>
+        <h2>{{info.name}}</h2>
+        <h3><span >Price: </span><strong >{{info.current_price}}$</strong> </h3>
+      </ion-label>
+      <ion-label>
+        <span style="margin-left: 70px; font-size: 15px;"  [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }"><strong>%{{info.price_change_percentage_24h.toFixed(2)}}</strong> </span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- DAHA FAZLA COİN LİSTELEME -->
+  <div style="display: flex; justify-content:center" id="morecryptobutton">
+    <button style="color: blue; background-color: white;" (click)="morecrypto()">
+    <h6>
+    İf you want to see 10 more crypto currience.
+    <br>
+    Just Click.
+    </h6>
+    </button>
+  </div>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar >
+    <ion-label>
+      <ion-icon name="home-sharp" style="font-size: 30px; margin-left: 70px; margin-right: 150px;"></ion-icon>
+    </ion-label>
+    <ion-label>
+      <ion-icon name="wallet-sharp" style="font-size: 30px;"></ion-icon>
+    </ion-label>
+  </ion-toolbar>
+</ion-footer>

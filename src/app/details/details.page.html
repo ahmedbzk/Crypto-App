@@ -1,0 +1,31 @@
+
+<ion-content>
+  <div style="padding: 5%; justify-content: center; display: flex;">
+
+    <img src="{{justcoininfo && justcoininfo.image}}">
+    </div>
+
+    <div style="margin-left: 3%;">
+    <h3>Market Cap Rank:<strong> {{justcoininfo && justcoininfo.market_cap_rank}}</strong></h3>
+    <h4>{{justcoininfo && justcoininfo.name}}</h4>
+    <h5>{{justcoininfo && justcoininfo.current_price}}</h5>
+
+    
+    
+  </div>
+</ion-content>
+
+
+
+
+
+<ion-footer>
+  <ion-toolbar >
+    <ion-label>
+      <ion-icon name="home-sharp" style="font-size: 30px; margin-left: 70px; margin-right: 150px;"></ion-icon>
+    </ion-label>
+    <ion-label>
+      <ion-icon name="wallet-sharp" style="font-size: 30px;"></ion-icon>
+    </ion-label>
+  </ion-toolbar>
+</ion-footer>
