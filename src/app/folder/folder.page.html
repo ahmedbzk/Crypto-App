@@ -2,7 +2,6 @@
 
 <ion-content [fullscreen]="true">
 
-  <img src="assets/logo.png" style="border-bottom: 1px solid black;">
 
   <!-- REFRESHER -->
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -14,10 +13,74 @@
     </ion-refresher-content>
   </ion-refresher>
 
+
+  
+  <!-- EN ÇOK YÜKSELEN 5 COİN -->
+  <div style="padding: 3%;">
+    <ion-label> 
+      <ion-icon name="caret-up-outline" style="color: green;"></ion-icon> 
+    </ion-label>
+    <ion-label style="font-size: 20px;"><strong><u>  Highest in 24h</u></strong></ion-label> 
+  <ion-slides>
+    <ion-slide *ngFor="let info of up.slice(0,5)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+      <ion-card style="height: 50%; width: 100%;">
+        <ion-row>
+          <ion-col>        
+            <img src="{{info.image}}" style="height: 120px;">
+          </ion-col>
+          <ion-col style="text-align: center; margin-top: 18%;">        
+            <label style="font-size: 20px;  color: black; margin-top: 10px; text-align: center;" ><strong>{{info.name}}</strong></label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="font-size: 18px; color: black; text-align: start; margin-left: 2%;">Price: <strong>{{info.current_price}}$</strong> </ion-col>
+          <ion-col [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }" style="text-align: right; font-size: 18px;"  >%{{info.price_change_percentage_24h.toFixed(2)}}</ion-col>
+        </ion-row>
+      </ion-card>
+      <ion-label>
+        <ion-icon name="arrow-forward-circle-outline" style="color: green; font-size: 30px;"></ion-icon> 
+      </ion-label>
+    </ion-slide>
+  </ion-slides>
+  </div>
+
+
+  <!-- EN ÇOK AZALAN 5 COİN -->
+  <div style="padding:3%;">
+    <ion-label> 
+      <ion-icon name="caret-down-outline" style="color: red;"></ion-icon> 
+    </ion-label>
+    <ion-label style="font-size: 20px;"><strong><u>  Least in 24h</u></strong></ion-label> 
+  <ion-slides>
+    <ion-slide *ngFor="let info of down.slice(0,5)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+      <ion-card style="height: 50%; width: 100%;">
+        <ion-row>
+          <ion-col>        
+            <img src="{{info.image}}" style="height: 120px;">
+          </ion-col>
+          <ion-col style="text-align: center; margin-top: 18%;">        
+            <label style="font-size: 20px;  color: black; margin-top: 10px; text-align: center;" ><strong>{{info.name}}</strong></label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="font-size: 18px; color: black; text-align: start; margin-left: 2%;">Price: <strong>{{info.current_price}}$</strong> </ion-col>
+          <ion-col [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }" style="text-align: right; font-size: 18px;"  >%{{info.price_change_percentage_24h.toFixed(2)}}</ion-col>
+        </ion-row>
+      </ion-card>
+      <ion-label>
+        <ion-icon name="arrow-forward-circle-outline" style="color: red; font-size: 30px;"></ion-icon> 
+      </ion-label>
+    </ion-slide>
+  </ion-slides>
+  </div>
+
+
+
+
   <!-- 10 COİN LİSTELEME -->
   
   <ion-list>
-    <ion-item *ngFor="let info of tencoininfo.slice(0,10)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+    <ion-item *ngFor="let info of allcoininfo.slice(0,10)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
       <ion-avatar slot="start">
         <img src="{{info.image}}" />
       </ion-avatar>

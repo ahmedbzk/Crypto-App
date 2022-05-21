@@ -11,5 +11,12 @@ export class WalletPage implements OnInit {
 
   ngOnInit() {
   }
+  doRefresh(event) {
+    window.location.href="/folder";
+
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
 
 }

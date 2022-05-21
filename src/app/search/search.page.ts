@@ -41,9 +41,9 @@ export class SearchPage implements OnInit {
     if(this.word.length>0){
       this.http.get(this.api_key).subscribe(data=>{
       this.itemallinfo=data;
-      this.iteminfo=this.itemallinfo.filter(x => x.id == this.id);
-      console.log(this.iteminfo);
-      console.log(this.id);
+      this.iteminfo = this.itemallinfo.filter((item) =>
+      item.name.toLowerCase().includes(this.word.toLowerCase())
+    );
     })
     }else{
       this.iteminfo=[];
