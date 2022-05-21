@@ -1,17 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>    <ion-title>    {{justcoininfo && justcoininfo.name}}   </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <div style="padding: 5%; justify-content: center; display: flex;">
 
     <img src="{{justcoininfo && justcoininfo.image}}">
+    
     </div>
 
-    <div style="margin-left: 3%;">
-    <h3>Market Cap Rank:<strong> {{justcoininfo && justcoininfo.market_cap_rank}}</strong></h3>
-    <h4>{{justcoininfo && justcoininfo.name}}</h4>
-    <h5>{{justcoininfo && justcoininfo.current_price}}</h5>
+    <div style="justify-content: center; display: flex; margin-bottom: 15px;">    
+      <ion-label style="color: white;font-size: 30px; background-color: black; padding: 10px;"><strong>{{justcoininfo && justcoininfo.current_price}}$</strong></ion-label>
+    </div>
 
-    
-    
+
+<!-- 24H DEĞİŞKENLİK -->
+    <div>
+      <ion-row style="text-align: center;">
+        <ion-col> 
+
+          <ion-label>
+          <strong>
+            <u>High 24h</u><br>
+          </strong>  
+        </ion-label>
+
+          <ion-label style="color: green;">
+            <strong> 
+              {{justcoininfo && justcoininfo.high_24h}}$
+            </strong>
+          </ion-label>
+
+        </ion-col>
+
+        <ion-col> 
+          <ion-label>
+          <strong>
+            <u>Low 24h</u><br>
+          </strong>  
+        </ion-label>
+
+          <ion-label style="color: red;"><strong> {{justcoininfo && justcoininfo.low_24h}}$</strong></ion-label>
+
+        </ion-col>
+      </ion-row>
+    </div>
+
+  <!-- BUY AND SELL -->
+
+  <div style="margin-top: 10%;">
+    <ion-row style="text-align: center;" >
+
+      <ion-col>
+        <ion-button color="success" expand="full">
+        Buy
+        </ion-button>
+      </ion-col>
+      
+      <ion-col>
+        <ion-button color="danger" expand="full">
+        Sell
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
   </div>
 </ion-content>
 
@@ -21,11 +77,19 @@
 
 <ion-footer>
   <ion-toolbar >
-    <ion-label>
-      <ion-icon name="home-sharp" style="font-size: 30px; margin-left: 70px; margin-right: 150px;"></ion-icon>
-    </ion-label>
-    <ion-label>
-      <ion-icon name="wallet-sharp" style="font-size: 30px;"></ion-icon>
-    </ion-label>
+    <ion-row>
+      <ion-col style="text-align: center">
+        <ion-icon name="home-sharp" style="font-size: 30px; " [routerLink]="['/folder']" routerLinkActive="router-link-active" ></ion-icon>
+
+      </ion-col>
+      <ion-col style="text-align: center" [routerLink]="['/search']" routerLinkActive="router-link-active" >
+        <ion-icon name="search-sharp" style="font-size: 30px;"></ion-icon>
+
+      </ion-col>
+      <ion-col style="text-align: center" [routerLink]="['/wallet']" routerLinkActive="router-link-active" >
+        <ion-icon name="wallet-sharp" style="font-size: 30px;"></ion-icon>
+
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-footer>

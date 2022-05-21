@@ -13,7 +13,6 @@ export class FolderPage implements OnInit {
   public api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   public tencoininfo:any=[];
   public allcoininfo:any=[];
-  more:number=10;
   
 
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
@@ -27,13 +26,7 @@ export class FolderPage implements OnInit {
     })
   }
 
-  morecrypto(){
-    this.more=this.more+10;
-    if(this.more==100){
-      this.uyari("No more crypto for now","danger")
-      document.getElementById("morecryptobutton").style.visibility="hidden";
-    }
-  }
+  
 
   doRefresh(event) {
     window.location.href="/folder";

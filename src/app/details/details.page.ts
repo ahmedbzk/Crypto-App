@@ -16,12 +16,10 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    
-    this.http.get(this.api_key+this.id).subscribe(data=>{
+    this.http.get(this.api_key).subscribe(data=>{
       this.coinallinfo=data;
       this.justcoininfo =this.coinallinfo.filter(x => x.id == this.id)
       this.justcoininfo=this.justcoininfo[0];
-      
       console.log(this.justcoininfo)
     });
 
