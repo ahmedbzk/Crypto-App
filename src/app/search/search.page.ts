@@ -16,7 +16,7 @@ export class SearchPage implements OnInit {
   public word:string;
   public itemallinfo:any=[];
   public iteminfo:any=[];
-
+  i:number=0;
 
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
@@ -32,17 +32,39 @@ export class SearchPage implements OnInit {
   }
 
   coinsup(){
-    this.http.get(this.api_key).subscribe(data=>{
-      this.tencoininfo=data;
-      this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? -1:1 )
-    })
+    
+    if(this.i==0){
+      this.http.get(this.api_key).subscribe(data=>{
+        this.tencoininfo=data;
+        this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? -1:1 )
+        this.i=this.i+1;
+      })
+    }
+    else if(this.i==1){
+      this.http.get(this.api_key).subscribe(data=>{
+        this.tencoininfo=data;
+        console.log(this.tencoininfo);
+        this.i=this.i-1;
+      })
+    }
+    
   }
 
   coinsdown(){
-    this.http.get(this.api_key).subscribe(data=>{
-      this.tencoininfo=data;
-      this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
-    })
+    if(this.i==0){
+      this.http.get(this.api_key).subscribe(data=>{
+        this.tencoininfo=data;
+        this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
+        this.i=this.i+1;
+      })
+    }
+    else if(this.i==1){
+      this.http.get(this.api_key).subscribe(data=>{
+        this.tencoininfo=data;
+        console.log(this.tencoininfo);
+        this.i=this.i-1;
+      })
+    }
   }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
+import { Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-folder',
@@ -17,6 +18,9 @@ export class FolderPage implements OnInit {
   public down:any=[];
   x:number=0;
   y:number=0;
+  f:boolean=true;
+  b:boolean=true;
+
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
@@ -38,6 +42,16 @@ export class FolderPage implements OnInit {
       this.down.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
     })
   }
+
+  forward(){
+    this.f=!this.f
+  }
+  back(){
+    this.b=!this.b
+  }
+
+
+
   
   gonext(){
     this.x=this.x+1;

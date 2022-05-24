@@ -19,9 +19,9 @@
   <!-- EN ÇOK YÜKSELEN 5 COİN -->
   <div style="padding: 3%; height: 3%;">
       <ion-icon name="caret-up-outline" style="color: green;" ></ion-icon> 
-    <ion-label style="font-size: 19px;"><strong> Highest in 24h</strong></ion-label> 
+    <ion-label style="font-size: 19px;" (click)="forward()" ><strong> Highest in 24h</strong></ion-label> 
   </div>
-  <ion-row>
+  <ion-row  *ngIf="f">
     <ion-col style="width: 85%;">
       <ion-slides>
         <ion-slide *ngFor="let info of up.slice(x,5)" >
@@ -50,38 +50,38 @@
   <!-- EN ÇOK AZALAN 5 COİN -->
   <div style="padding: 3%; height: 3%;">
     <ion-icon name="caret-down-outline" style="color: red;" ></ion-icon> 
-  <ion-label style="font-size: 19px;"><strong> Least in 24h</strong></ion-label> 
-</div>
-<ion-row>
-  <ion-col style="width: 85%;">
-    <ion-slides>
-      <ion-slide *ngFor="let info of down.slice(y,5)" >
-        <ion-card style="height: 50%; width: 100%;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
-          <ion-row>
-            <ion-col>        
-              <img src="{{info.image}}" style="height: 120px;">
-            </ion-col>
-            <ion-col style="text-align: center; margin-top: 18%;">        
-              <label style="font-size: 20px;  color: black; margin-top: 10px; text-align: center;" ><strong>{{info.name}}</strong></label>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col style="font-size: 18px; color: black; text-align: start; margin-left: 2%;">Price: <strong>{{info.current_price}}$</strong> </ion-col>
-            <ion-col [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }" style="text-align: right; font-size: 18px;"  >%{{info.price_change_percentage_24h.toFixed(2)}}</ion-col>
-          </ion-row>
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
-  </ion-col>
-  <ion-col style="text-align: left; margin-top: 20%;">
-        <ion-icon name="arrow-forward-circle-outline" style="color: red; font-size: 30px;" (click)="gonexttwo()"></ion-icon> 
-  </ion-col>
-</ion-row>
+  <ion-label style="font-size: 19px; " (click)="back()"><strong> Least in 24h</strong></ion-label> 
+  </div>
+  <ion-row *ngIf="b" >
+    <ion-col style="width: 85%;">
+      <ion-slides>
+        <ion-slide *ngFor="let info of down.slice(y,5)" >
+          <ion-card style="height: 50%; width: 100%;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+            <ion-row>
+              <ion-col>        
+                <img src="{{info.image}}" style="height: 120px;">
+              </ion-col>
+              <ion-col style="text-align: center; margin-top: 18%;">        
+                <label style="font-size: 20px;  color: black; margin-top: 10px; text-align: center;" ><strong>{{info.name}}</strong></label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col style="font-size: 18px; color: black; text-align: start; margin-left: 2%;">Price: <strong>{{info.current_price}}$</strong> </ion-col>
+              <ion-col [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }" style="text-align: right; font-size: 18px;"  >%{{info.price_change_percentage_24h.toFixed(2)}}</ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+    <ion-col style="text-align: left; margin-top: 20%;">
+          <ion-icon name="arrow-forward-circle-outline" style="color: red; font-size: 30px;" (click)="gonexttwo()"></ion-icon> 
+    </ion-col>
+  </ion-row>
 
   
 <!-- COİN BAŞLIKLARI -->
 
-  <div>
+  <div style="margin-top: 15px;">
     
     <ion-row>
       <ion-col style="margin-left: 5%; color: gray;">Cryptocurrencies</ion-col>
