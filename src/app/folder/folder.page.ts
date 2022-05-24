@@ -15,7 +15,8 @@ export class FolderPage implements OnInit {
   public fivecoininfo:any=[];
   public up:any=[];
   public down:any=[];
-
+  x:number=0;
+  y:number=0;
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
@@ -38,7 +39,24 @@ export class FolderPage implements OnInit {
     })
   }
   
-
+  gonext(){
+    this.x=this.x+1;
+    if(this.x<5){
+      this.x=this.x+1;
+    }
+    else{
+      this.x=0;
+    }
+  }
+  gonexttwo(){
+    this.y=this.y+1;
+    if(this.y<5){
+      this.y=this.y+1;
+    }
+    else{
+      this.y=0;
+    }
+  }
   
 
   doRefresh(event) {
