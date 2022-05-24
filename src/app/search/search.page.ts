@@ -17,6 +17,7 @@ export class SearchPage implements OnInit {
   public itemallinfo:any=[];
   public iteminfo:any=[];
 
+
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
@@ -25,6 +26,22 @@ export class SearchPage implements OnInit {
     this.http.get(this.api_key).subscribe(data=>{
       this.tencoininfo=data;
       console.log(this.tencoininfo);
+    })
+
+   
+  }
+
+  coinsup(){
+    this.http.get(this.api_key).subscribe(data=>{
+      this.tencoininfo=data;
+      this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? -1:1 )
+    })
+  }
+
+  coinsdown(){
+    this.http.get(this.api_key).subscribe(data=>{
+      this.tencoininfo=data;
+      this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
     })
   }
 
@@ -50,7 +67,13 @@ export class SearchPage implements OnInit {
     }
   }
 
+  doRefresh(event) {
+    window.location.href="/search";
 
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
 
 
   async uyari(mesaj,renk) {

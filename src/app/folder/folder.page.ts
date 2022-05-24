@@ -37,6 +37,7 @@ export class FolderPage implements OnInit {
       this.down.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
     })
   }
+  
 
   
 

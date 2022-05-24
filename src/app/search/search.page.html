@@ -1,4 +1,14 @@
 <ion-content>
+  <!-- REFRESHER -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="crescent"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
   <!-- SEARCHBAR LİSTELEME -->
   
   <ion-searchbar placeholder="Search Coin or Token..." color="dark" 
@@ -6,6 +16,7 @@
   </ion-searchbar>
   
   <ion-list >
+    
     <ion-item *ngFor="let info of iteminfo" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" color="dark">
       <ion-avatar slot="start">
         <img src="{{info.image}}" />
@@ -23,10 +34,27 @@
     </ion-item>
   </ion-list >
 
+<!-- COİN BAŞLIKLARI -->
+
+<div>
+    
+  <ion-row>
+    <ion-col style="margin-left: 5%; color: gray;">Cryptocurrencies</ion-col>
+    <ion-col style="margin-left: 35%;">
+      <button style="background-color: white;" (click)="coinsup()">
+      <ion-icon name="arrow-up-circle-outline" style="font-size: 20px; color: green;"></ion-icon>
+      </button>
+      <button style="background-color: white;" (click)="coinsdown()">
+      <ion-icon name="arrow-down-circle-outline" style="font-size: 20px; color: red;"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  
+</div>
 
   <!-- COİN LİSTELEME -->
   <ion-list>
-    <ion-item *ngFor="let info of tencoininfo.slice(0,more)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+    <ion-item *ngFor="let info of tencoininfo.slice(0,more)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active"  >
       <ion-avatar slot="start">
         <img src="{{info.image}}" />
       </ion-avatar>
