@@ -58,7 +58,7 @@ export class FolderPage implements OnInit {
     if(this.x<5){
       this.x=this.x+1;
     }
-    else{
+    else {
       this.x=0;
     }
   }

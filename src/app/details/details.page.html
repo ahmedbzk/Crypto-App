@@ -2,57 +2,79 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
-    </ion-buttons>    <ion-title>    {{justcoininfo && justcoininfo.name}}   </ion-title>
+    </ion-buttons>    <ion-title>    {{justcoininfo && justcoininfo.name}} ({{justcoininfo && justcoininfo.symbol}})  </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="padding: 5%; justify-content: center; display: flex;">
 
-    <img src="{{justcoininfo && justcoininfo.image}}">
-    
+
+
+  <!-- COİN İNFOLAR -->
+  <div style="padding: 5%; ">
+    <ion-row>
+      <ion-col>
+        <img src="{{justcoininfo && justcoininfo.image}}" style="height: 90%; border: 1px solid grey; border-radius: 50%; ">
+      </ion-col>
+      <ion-col style="text-align: center;  margin-top: 35px;">
+        <label style="text-align: center; font-size: 20px;"><u>Price</u></label><br><br>
+        <label style=" font-size: 25px;"><strong>{{justcoininfo && justcoininfo.current_price}}$ </strong></label>
+    <ion-progress-bar color="dark" type="indeterminate" style="margin-top: 5px;" ></ion-progress-bar>
+
+      </ion-col>
+    </ion-row>
     </div>
 
-    <div style="justify-content: center; display: flex; margin-bottom: 15px;">    
-      <ion-label style="color: white;font-size: 30px; background-color: black; padding: 10px;"><strong>{{justcoininfo && justcoininfo.current_price}}$</strong></ion-label>
-    </div>
+      <!-- 24H DEĞİŞKENLİK -->
+  <div style="margin-bottom: 5%;">
+    <ion-row style="text-align: center;">
+      <ion-col> 
 
+        <ion-label>
+        <strong>
+          <u>High 24h</u><br>
+        </strong>  
+      </ion-label>
 
-<!-- 24H DEĞİŞKENLİK -->
-    <div>
-      <ion-row style="text-align: center;">
-        <ion-col> 
-
-          <ion-label>
-          <strong>
-            <u>High 24h</u><br>
-          </strong>  
+        <ion-label style="color: green;">
+          <strong> 
+            {{justcoininfo && justcoininfo.high_24h}}$
+          </strong>
         </ion-label>
 
-          <ion-label style="color: green;">
-            <strong> 
-              {{justcoininfo && justcoininfo.high_24h}}$
-            </strong>
-          </ion-label>
+      </ion-col>
 
-        </ion-col>
+      <ion-col> 
+        <ion-label>
+        <strong>
+          <u>Low 24h</u><br>
+        </strong>  
+      </ion-label>
 
-        <ion-col> 
-          <ion-label>
-          <strong>
-            <u>Low 24h</u><br>
-          </strong>  
-        </ion-label>
+        <ion-label style="color: red;"><strong> {{justcoininfo && justcoininfo.low_24h}}$</strong></ion-label>
 
-          <ion-label style="color: red;"><strong> {{justcoininfo && justcoininfo.low_24h}}$</strong></ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
 
-        </ion-col>
-      </ion-row>
-    </div>
+  <!-- COİN İNFOLAR 2 -->
+  <div style="padding: 3%; font-size: 17px;">
+    <ion-row>Market Cap Rank --><strong>{{justcoininfo && justcoininfo.market_cap_rank}}</strong></ion-row>
+    <ion-row style="margin-top: 5px;">Total Supply --> <strong>{{justcoininfo && justcoininfo.total_supply}}</strong></ion-row>
+    <ion-row style="margin-top: 5px;">Ath --><strong>{{justcoininfo && justcoininfo.ath}}</strong></ion-row>
+    <ion-row style="margin-top: 5px;">Ath Change Percentage--> <strong>%{{justcoininfo && justcoininfo.ath_change_percentage.toFixed(2)}}</strong></ion-row>
+  </div>
 
+<div style="text-align: center; padding: 3%; 
+display: flex;
+align-items: center;
+justify-content: center;">
+  <ion-item style="border: 1px solid black; width: 50%; text-align: center;">
+  <ion-input type="number" placeholder="Buy or Sell"></ion-input>
+  </ion-item>
+</div>
   <!-- BUY AND SELL -->
-
-  <div style="margin-top: 10%;">
+  <div style="margin-top: 5%;">
     <ion-row style="text-align: center;" >
 
       <ion-col>
