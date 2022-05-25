@@ -17,11 +17,13 @@
       <ion-col style="font-size: 17px;">
         Hello!<br>
         <strong style="font-size: 18px; border-bottom: 1px solid black;">
-        Ahmetcan Bozkurt
+        {{name}}
         </strong>
       </ion-col>
       <ion-col style="text-align: right;">
-        <ion-icon name="person-outline" style="font-size: 30px; margin-top: 5px; margin-right: 5px;"></ion-icon>
+        <button (click)="exit()" [routerLink]="['/start']" routerLinkActive="router-link-active" style="background-color: transparent;" >
+          <ion-icon name="exit-outline" style="font-size: 35px; padding: 3px; color:red"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
   </div>

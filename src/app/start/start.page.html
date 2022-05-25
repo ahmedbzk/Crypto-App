@@ -1,7 +1,17 @@
 <div style="text-align: center; justify-content: center; margin-top: 10%; padding: 5%; ">
-  <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX30589983.jpg" style="height: 200px; margin-bottom: 10px;">
+  <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX30589983.jpg" style="height: 180px; margin-bottom: 10px;">
   <br>
   <strong >
+    <div style="background-color: grey;
+    margin-bottom: 13px; 
+    text-align: center; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex;">
+      <ion-item>
+        <ion-input placeholder="What is your name?" type="String" style="text-align: center;" [(ngModel)]="title"></ion-input>
+      </ion-item>
+    </div>
   WELCOME THE CRYPTO APP. İF ARE YOU WANT TO BUY SOME COİN AND TOKEN, YOU ARE TRUE PLACE.
   </strong>
   <br>
@@ -12,7 +22,7 @@
   </strong>
   <ion-icon name="arrow-down-circle-sharp" style="font-size: 30px; margin-top: 3px;"></ion-icon>
 <br>
-  <button [routerLink]="['/search']" routerLinkActive="router-link-active"  style="background-color: black;  margin-top: 5%; height: 23%; width: 30%; border-radius: 50%;">
-    <ion-icon name="logo-bitcoin" style="font-size: 50px; color: white;"></ion-icon>
+  <button (click)="send()" [routerLink]="['/folder/']" routerLinkActive="router-link-active"  style="background-color: black;  margin-top: 5%; height: 15%; width: 20%; border-radius: 50%;">
+    <ion-icon name="logo-bitcoin" style="font-size: 35px; color: white;"></ion-icon>
   </button>
 </div>

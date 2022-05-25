@@ -20,6 +20,7 @@ export class FolderPage implements OnInit {
   y:number=0;
   f:boolean=true;
   b:boolean=true;
+  name:any="";
 
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
@@ -41,6 +42,11 @@ export class FolderPage implements OnInit {
       this.down=data;
       this.down.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
     })
+    this.name=localStorage.getItem("title")
+  } 
+  
+  exit(){
+    localStorage.removeItem("title");
   }
 
   forward(){
