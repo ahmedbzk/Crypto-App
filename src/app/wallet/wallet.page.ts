@@ -24,7 +24,8 @@ export class WalletPage implements OnInit {
 
     this.btn=document.getElementById('btn');
     this.divcolor=document.getElementById('divcolor');
-    
+    this.changeColor('darkblue');
+
   }
 
 
@@ -35,15 +36,15 @@ export class WalletPage implements OnInit {
   btncolor(){
     this.i=this.i+1;
     if(this.i==1){
-      this.changeColor('red');
+      this.changeColor('darkred');
       this.i=this.i+1;
     }
     else if(this.i==2){
-      this.changeColor('orange');
+      this.changeColor('darkslategray');
       this.i=this.i+1;
     }
     else if(this.i==3){
-      this.changeColor('white');
+      this.changeColor('darkgreen');
       this.i=this.i+1;
     }
     else{
