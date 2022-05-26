@@ -1,21 +1,73 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>wallet</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div style="background-color: rgba(2, 2, 192, 0.747); height: 100%;">
+<div style="background-color: rgba(13, 13, 222, 0.692);  " id="divcolor" >
+  <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
+    <ion-col style="margin-top: 8%;">
+      <ion-label style="font-size: 190%; color: white; ">$5599</ion-label><br>
+      <ion-label style="font-size: 80%; margin-top: 15px; color: rgb(212, 212, 212);">My Wallet</ion-label>
+    </ion-col>
+  </ion-row>
 
-<ion-content>
-   <!-- REFRESHER -->
-   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="chevron-down-circle-outline"
-      pullingText="Pull to refresh"
-      refreshingSpinner="crescent"
-      refreshingText="Refreshing...">
-    </ion-refresher-content>
-  </ion-refresher>
+  <ion-row style="margin-top: 7%;" >
+    <ion-col >
+      <div class="col-1">
+      <ion-icon name="bag-add-outline" style="color: white; font-size: 25px;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
+      </div>
+      <ion-label class="col-2">Buy</ion-label>
+    </ion-col>
+    <ion-col >
+      <div class="col-1">
+      <ion-icon name="bag-remove-outline" style="color: white; font-size: 25px; " [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
+      </div>
+      <ion-label class="col-2">Sell</ion-label>
+    </ion-col>
+    <ion-col >
+      <div class="col-1">
+      <ion-icon name="cellular-outline" style="color: white; font-size: 25px; "></ion-icon><br>
+      </div>
+      <ion-label class="col-2">History</ion-label>
+    </ion-col>
+    <ion-col >
+      <div class="col-1">
+      <button style="background-color: transparent ;" id="btn" (click)="btncolor()">
+      <ion-icon name="contrast-outline" style="color: white; font-size: 25px; "></ion-icon><br>
+      </button>
+      </div>
+      <ion-label class="col-2">Color</ion-label>
+    </ion-col>
+  </ion-row>
+</div>
+<ion-progress-bar color="dark" value="1"></ion-progress-bar>
+ <ion-content >
+    <div style="padding: 3px; border-radius: 150px;">
+      <ion-row>
+        <ion-col style="text-align: center; font-size: 20px; margin-top: 5px; margin-bottom: 5px;">Coins</ion-col>
+        <ion-progress-bar color="primary" value="1"></ion-progress-bar>
+      </ion-row>
+    </div>
 
-</ion-content>
+
+      <!--10 COİN LİSTELEME-->
+  <ion-list>
+    <ion-item *ngFor="let info of allcoininfo.slice(0,10)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+      <ion-avatar slot="start">
+        <img src="{{info.image}}" />
+      </ion-avatar>
+      
+      <ion-label>
+        <h2>{{info.name}}</h2>
+        <h3><span >Price: </span><strong >{{info.current_price}}$</strong> </h3>
+      </ion-label>
+      <ion-label>
+        <span style="margin-left: 70px; font-size: 15px;"  [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }"><strong>%{{info.price_change_percentage_24h.toFixed(2)}}</strong> </span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content> 
+
+</div>
+
+
+
 
 
 <ion-footer style="border-top: 1px solid grey;">
