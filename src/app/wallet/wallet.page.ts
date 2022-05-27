@@ -14,18 +14,36 @@ export class WalletPage implements OnInit {
   public btn:any;
   public divcolor:any;
   i:number=0;
+  balance:number=JSON.parse(localStorage.getItem('balance'));
+  wallet=JSON.parse(localStorage.getItem('wallet'));
+   xarray = [];
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
+    
     this.http.get(this.api_key).subscribe(data=>{
       this.allcoininfo=data;
       console.log(this.allcoininfo);
-    })
+      this.update()
+      console.log(this.wallet);
+      console.log(this.xarray);
+      
+    });
+   
+  
+    
 
     this.btn=document.getElementById('btn');
     this.divcolor=document.getElementById('divcolor');
     this.changeColor('darkblue');
 
+  }
+  update(){
+    this.wallet.forEach((element) => {
+      let live = this.allcoininfo.find((x) => x.id == element.id);
+      live.amount = element.amount
+      this.xarray.push(live);
+      });
   }
 
 

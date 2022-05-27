@@ -70,21 +70,22 @@ display: flex;
 align-items: center;
 justify-content: center;">
   <ion-item style="border: 1px solid black; width: 50%; text-align: center;">
-  <ion-input type="number" placeholder="Buy or Sell"></ion-input>
+  <ion-input type="number" placeholder="Buy or Sell" [(ngModel)]="count" ></ion-input>
   </ion-item>
 </div>
+<ion-label style="text-align: center; font-size: 80%; justify-content: center; display: flex; color: gray;">Your balance:<strong>{{balance}}$</strong></ion-label>
   <!-- BUY AND SELL -->
   <div style="margin-top: 5%;">
     <ion-row style="text-align: center;" >
 
       <ion-col>
-        <ion-button color="success" expand="full">
+        <ion-button color="success" expand="full" (click)="buy()">
         Buy
         </ion-button>
       </ion-col>
       
       <ion-col>
-        <ion-button color="danger" expand="full">
+        <ion-button color="danger" expand="full" (click)="sell()">
         Sell
         </ion-button>
       </ion-col>
@@ -117,8 +118,8 @@ justify-content: center;">
           </div>
         </ion-col>
 
-      <ion-col style="text-align: center" [routerLink]="['/wallet']" routerLinkActive="router-link-active" >
-        <ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; "></ion-icon><br>
+      <ion-col style="text-align: center">
+        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
         <ion-label style=" font-size: 10px; margin-left: 15px; "><strong>Wallet</strong></ion-label>
       </ion-col>
 

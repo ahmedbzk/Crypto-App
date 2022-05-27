@@ -46,7 +46,7 @@ export class FolderPage implements OnInit {
   } 
   
   exit(){
-    localStorage.removeItem("title");
+    localStorage.clear();
   }
 
   forward(){
