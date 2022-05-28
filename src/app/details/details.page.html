@@ -82,7 +82,7 @@
         <ion-input type="number" placeholder="Count" [(ngModel)]="count" ></ion-input>
       </ion-item>
       <div style="margin-top: 3px;">
-      <ion-label style="margin-bottom: 5px;  color: gray; font-size: 17px;">Balance: {{balance}}$</ion-label><br>
+      <ion-label style="margin-bottom: 5px;  color: gray; font-size: 17px;">Balance: {{balance.toFixed(2)}}$</ion-label><br>
       <ion-label style="  color: red;">${{bol}}</ion-label>
       </div>
     </ion-col>
