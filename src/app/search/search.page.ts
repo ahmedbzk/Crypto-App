@@ -17,7 +17,6 @@ export class SearchPage implements OnInit {
   public itemallinfo:any=[];
   public iteminfo:any=[];
   i:number=0;
-
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {

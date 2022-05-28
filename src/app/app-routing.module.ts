@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'sell/:id',
+    loadChildren: () => import('./sell/sell.module').then( m => m.SellPageModule)
   }
 ];
 

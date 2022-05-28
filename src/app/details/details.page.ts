@@ -14,8 +14,9 @@ export class DetailsPage implements OnInit {
   coinallinfo:any;
   justcoininfo:any;
   index:number;
-  balance:number=JSON.parse(localStorage.getItem('balance'))||100000;
+  balance:number=JSON.parse(localStorage.getItem('balance'))||0;
   count:number;
+  bol:number;
   public wallet:any=JSON.parse(localStorage.getItem("wallet")) || [];
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController) { }
 
@@ -25,6 +26,26 @@ export class DetailsPage implements OnInit {
     localStorage.setItem('balance',JSON.stringify(this.balance));
 
    
+  }
+
+  butonOne(){
+    this.bol=this.balance/4;
+    this.count=this.bol/this.justcoininfo.current_price;
+  }
+
+  butonTwo(){
+    this.bol=this.balance/2;
+    this.count=this.bol/this.justcoininfo.current_price;
+  }
+
+  butonThree(){
+    this.bol=this.balance/4*3;
+    this.count=this.bol/this.justcoininfo.current_price;
+  }
+
+  butonFour(){
+    this.bol=this.balance;
+    this.count=this.bol/this.justcoininfo.current_price;
   }
 
   buy(){
@@ -57,39 +78,7 @@ export class DetailsPage implements OnInit {
     }
   }
 
-  sell(){
-    if(!this.count){
-      this.uyari("You must enter the count",'danger')
-
-    }else{
-    var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
-    this.wallet.find((a,i) => {if(a.id === this.justcoininfo.id){this.index = i}})
-    if(!checkWallet){
-      this.uyari("You can not sell. Because you are not have this coin.",'danger')
-    }else{
-      
-    
-    if(checkWallet.amount<this.count){
-        this.uyari("You can not sell. Because you are not have count this coin.",'danger')
-    }else{
-    this.balance=this.balance+(this.justcoininfo.current_price*this.count);
-    localStorage.setItem('balance',JSON.stringify(this.balance));
-    checkWallet.amount -= this.count;
-    if(checkWallet.amount==0){
-  this.wallet.splice(this.index,1)
-      
-      
-      
-    }
-    localStorage.setItem("wallet",JSON.stringify(this.wallet))
-    }
-   
-    console.log(this.balance)
-    console.log(this.wallet);
-
-    }
-    }
-  }
+  
 
 
   getData(){
