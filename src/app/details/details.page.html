@@ -22,7 +22,7 @@
           <ion-segment-button style="background-color: green; color: white;">
             <ion-label style="font-size: 15px;">BUY</ion-label>
           </ion-segment-button>
-          <ion-segment-button  [routerLink]="['/sell',justcoininfo && justcoininfo.id]" routerLinkActive="router-link-active" >
+          <ion-segment-button  (click)="sell()"  >
             <ion-label style="font-size: 15px;">SELL</ion-label>
           </ion-segment-button>
         </ion-segment><br>

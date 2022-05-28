@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-details',
@@ -18,13 +18,14 @@ export class DetailsPage implements OnInit {
   count:number;
   bol:number;
   public wallet:any=JSON.parse(localStorage.getItem("wallet")) || [];
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private navCtrl: NavController) { }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getData();
     localStorage.setItem('balance',JSON.stringify(this.balance));
-
+   
+    
    
   }
 
@@ -78,8 +79,11 @@ export class DetailsPage implements OnInit {
     }
   }
 
-  
-
+  sell(){
+    this.navCtrl.navigateRoot(['sell',this.justcoininfo&&this.justcoininfo.id]).then(() => {
+    window.location.reload();
+  });
+  }
 
   getData(){
     this.http.get(this.api_key).subscribe(data=>{

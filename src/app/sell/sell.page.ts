@@ -27,7 +27,6 @@ export class SellPage implements OnInit {
     this.getData();
     localStorage.setItem('balance',JSON.stringify(this.balance));
     console.log(this.wallet)
-
      
   }
 
@@ -88,21 +87,19 @@ export class SellPage implements OnInit {
     var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
     this.wallet.find((a,i) => {if(a.id === this.justcoininfo.id){this.index = i}})
     if(!checkWallet){
-      this.uyari("You can not sell. Because you are not have this coin.",'danger')
+        this.uyari("You can not sell. Because you are not have this coin.",'danger')
     }else{
       
     
     if(checkWallet.amount<this.count){
         this.uyari("You can not sell. Because you are not have count this coin.",'danger')
     }else{
-    this.balance=this.balance+(this.justcoininfo.current_price*this.count);
-    localStorage.setItem('balance',JSON.stringify(this.balance));
-    checkWallet.amount -= this.count;
+        this.balance=this.balance+(this.justcoininfo.current_price*this.count);
+        localStorage.setItem('balance',JSON.stringify(this.balance));
+        checkWallet.amount -= this.count;
+        this.uyari("You sold.",'success')
     if(checkWallet.amount==0){
-  this.wallet.splice(this.index,1)
-      
-      
-      
+        this.wallet.splice(this.index,1)
     }
     localStorage.setItem("wallet",JSON.stringify(this.wallet))
     }
