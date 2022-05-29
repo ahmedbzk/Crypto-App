@@ -14,7 +14,7 @@ export class DetailsPage implements OnInit {
   coinallinfo:any;
   justcoininfo:any;
   index:number;
-  balance:number=JSON.parse(localStorage.getItem('balance'))||0;
+  balance:number=JSON.parse(localStorage.getItem('balance'))||1;
   count:number;
   bol:number;
   public wallet:any=JSON.parse(localStorage.getItem("wallet")) || [];
