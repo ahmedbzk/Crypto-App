@@ -14,10 +14,12 @@ export class DetailsPage implements OnInit {
   coinallinfo:any;
   justcoininfo:any;
   index:number;
-  balance:number=JSON.parse(localStorage.getItem('balance'))||1;
+  balance:number=JSON.parse(localStorage.getItem('balance'))||0;
   count:number;
   bol:number;
   public wallet:any=JSON.parse(localStorage.getItem("wallet")) || [];
+  public wlist:any=[];
+
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private navCtrl: NavController) { }
 
   ngOnInit() {
@@ -27,6 +29,11 @@ export class DetailsPage implements OnInit {
    
     
    
+  }
+
+  watchlist(){
+    this.wlist=localStorage.setItem('watchlist',this.justcoininfo.id);
+    console.log(this.wlist);
   }
 
   butonOne(){

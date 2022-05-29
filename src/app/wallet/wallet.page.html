@@ -13,13 +13,13 @@
   <ion-row style="margin-top: 7%;" >
     <ion-col >
       <div class="col-1">
-      <ion-icon name="bag-add-outline" style="color: white; font-size: 25px;" [routerLink]="['/details/',wallet[0].id]" routerLinkActive="router-link-active" ></ion-icon><br>
+      <ion-icon name="bag-add-outline" style="color: white; font-size: 25px;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
       </div>
       <ion-label class="col-2">Buy</ion-label>
     </ion-col>
     <ion-col >
       <div class="col-1">
-      <ion-icon name="bag-remove-outline" style="color: white; font-size: 25px; " [routerLink]="['/sell/',wallet[0].id]" routerLinkActive="router-link-active" ></ion-icon><br>
+      <ion-icon name="bag-remove-outline" style="color: white; font-size: 25px; " [routerLink]="['/sell/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
       </div>
       <ion-label class="col-2">Sell</ion-label>
     </ion-col>
@@ -63,7 +63,7 @@
       </ion-label>
       <ion-label style="text-align: right;" >
         <h2>{{info.amount.toFixed(2)}} {{info.symbol.toUpperCase()}}</h2>
-        <h3><strong >{{info.amount*info.current_price.toFixed(3)}}$</strong> </h3>      </ion-label>
+        <h3><strong >{{info.amount*info.current_price.toFixed(2)}}$</strong> </h3>      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content> 
@@ -89,7 +89,7 @@
       </ion-col>
 
         <ion-col>
-          <div style="background-color: black; border-radius: 60%; height: 100%; text-align: center;" [routerLink]="['/details/',wallet[0].id]" routerLinkActive="router-link-active" >
+          <div style="background-color: black; border-radius: 60%; height: 100%; text-align: center;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" >
             <ion-icon name="logo-bitcoin" style="color: white; font-size: 40px; margin-top: 3px;"></ion-icon><br>
           </div>
         </ion-col>

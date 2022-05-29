@@ -39,14 +39,13 @@
 <div>
     
   <ion-row>
-    <ion-col style="margin-left: 5%; color: gray;">Cryptocurrencies</ion-col>
-    <ion-col style="margin-left: 35%;">
+    <ion-col style="margin-left: 5%; color: black;"><strong><u>Crypto's</u></strong></ion-col>
+    <ion-col style="margin-left: 10%; color: gray;" >Watchlist</ion-col>
+    <ion-col style="margin-left: 10%;">
       <button style="background-color: white;" (click)="coinsup()">
       <ion-icon name="arrow-up-circle-outline" style="font-size: 20px; color: green;"></ion-icon>
-      </button>
-      <button style="background-color: white;" (click)="coinsdown()">
       <ion-icon name="arrow-down-circle-outline" style="font-size: 20px; color: red;"></ion-icon>
-      </button>
+      </button> 
     </ion-col>
   </ion-row>
   
@@ -55,6 +54,7 @@
   <!-- COİN LİSTELEME -->
   <ion-list>
     <ion-item *ngFor="let info of tencoininfo.slice(0,more)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active"  >
+      
       <ion-avatar slot="start">
         <img src="{{info.image}}" />
       </ion-avatar>

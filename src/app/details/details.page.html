@@ -3,6 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>    <ion-title>    {{justcoininfo && justcoininfo.name}} ({{justcoininfo && justcoininfo.symbol}})  </ion-title>
+    <button style="background-color: transparent;" slot="end">
+      <ion-icon name="star-outline" slot="end" style=" color: red; font-size: 30px; margin-right: 3%;" (click)="watchlist()"></ion-icon>
+    </button>
   </ion-toolbar>
 </ion-header>
 

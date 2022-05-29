@@ -17,6 +17,8 @@ export class SearchPage implements OnInit {
   public itemallinfo:any=[];
   public iteminfo:any=[];
   i:number=0;
+ 
+
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
@@ -24,10 +26,10 @@ export class SearchPage implements OnInit {
 
     this.http.get(this.api_key).subscribe(data=>{
       this.tencoininfo=data;
-      console.log(this.tencoininfo);
+     
+      
     })
 
-   
   }
 
   coinsup(){
@@ -43,28 +45,25 @@ export class SearchPage implements OnInit {
       this.http.get(this.api_key).subscribe(data=>{
         this.tencoininfo=data;
         console.log(this.tencoininfo);
-        this.i=this.i-1;
+        this.i=this.i+1;
+      })
+    }
+    else if(this.i==2){
+      this.http.get(this.api_key).subscribe(data=>{
+        this.tencoininfo=data;
+        this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
+        this.i=this.i-2;
       })
     }
     
   }
 
-  coinsdown(){
-    if(this.i==0){
-      this.http.get(this.api_key).subscribe(data=>{
-        this.tencoininfo=data;
-        this.tencoininfo.sort((a,b) => a.price_change_percentage_24h > b.price_change_percentage_24h ? 1:-1 )
-        this.i=this.i+1;
-      })
-    }
-    else if(this.i==1){
-      this.http.get(this.api_key).subscribe(data=>{
-        this.tencoininfo=data;
-        console.log(this.tencoininfo);
-        this.i=this.i-1;
-      })
-    }
-  }
+
+
+
+
+  
+
 
 
   morecrypto(){
