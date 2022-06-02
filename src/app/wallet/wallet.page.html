@@ -4,8 +4,8 @@
 <div  id="divcolor" >
   <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
     <ion-col style="margin-top: 8%;">
-      <ion-label style="font-size: 190%; color: white; ">${{balance.toFixed(2)}}</ion-label><br>
-      <ion-label style="font-size: 80%; margin-top: 15px; color: rgb(212, 212, 212);">My Wallet</ion-label>
+      <ion-label style="font-size: 190%; color: white; ">${{(totalValue+balance).toFixed(2)}}</ion-label><br>
+      <ion-label style="font-size: 80%; margin-top: 15px; color: rgb(212, 212, 212);">Total Balance</ion-label>
     </ion-col>
   </ion-row>
 
@@ -40,18 +40,20 @@
   </ion-row>
 </div>
 <ion-progress-bar color="dark" value="1"></ion-progress-bar>
- <ion-content >
+<!-- WALLET DOWN SİDE -->
+ <ion-content style="background-color: white;">
    <!-- PRİCE VE PROGRESS BAR -->
     <div style="padding: 3px; border-radius: 150px;">
       <ion-row>
-        <ion-col style="text-align: center; font-size: 20px; margin-top: 5px; margin-bottom: 5px;">Coins</ion-col>
+        <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;">Coins</ion-col>
+        <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 15%;">USD:<strong>${{balance.toFixed(2)}}</strong></ion-col>
         <ion-progress-bar color="primary" value="1"></ion-progress-bar>
       </ion-row>
     </div>
 
 
       <!--Wallet COİNLERİ LİSTELEME-->
-  <ion-list>
+  <ion-list >
     <ion-item *ngFor="let info of xarray" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
       <ion-avatar slot="start">
         <img src="{{info.image}}" />
@@ -66,6 +68,8 @@
         <h3><strong >{{info.amount*info.current_price.toFixed(2)}}$</strong> </h3>      </ion-label>
     </ion-item>
   </ion-list>
+<!--  -->
+
 </ion-content> 
 
 

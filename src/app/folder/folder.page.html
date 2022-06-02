@@ -1,5 +1,5 @@
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" style="background-color: white">
 
   <!-- REFRESHER -->
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -12,9 +12,9 @@
   </ion-refresher>
 
   <!-- KULLANICI ADI -->
-  <div style="padding: 10px;">
+  <div style="padding: 10px; background-color: white;">
     <ion-row>
-      <ion-col style="font-size: 17px;">
+      <ion-col style="font-size: 17px; color: black;">
         Hello!<br>
         <strong style="font-size: 18px; border-bottom: 1px solid black;">
         {{name}}
@@ -29,12 +29,12 @@
   </div>
 
   <!-- EN ÇOK YÜKSELEN 5 COİN -->
-  <div style="padding: 3%; height: 3%;">
+  <div style="padding: 3%; height: 3%; background-color: white;">
       <ion-icon *ngIf="f" name="caret-up-outline" style="color: green;" ></ion-icon> 
       <ion-icon *ngIf="!f" name="caret-down-outline" style="color: green;" ></ion-icon> 
     <ion-label style="font-size: 17px;" (click)="forward()" ><strong> Highest in 24h</strong></ion-label> 
   </div>
-  <ion-row  *ngIf="f" style="height: 35%;">
+  <ion-row  *ngIf="f" style="height: 35%; background-color: white">
     <ion-col style="width: 85%;">
       <ion-slides style="margin-top: 5px; ">
         <ion-slide *ngFor="let info of up.slice(x,5)" >
@@ -61,12 +61,12 @@
   </ion-row>
 
   <!-- EN ÇOK AZALAN 5 COİN -->
-  <div style="padding: 3%; height: 3%;">
+  <div style="padding: 3%; height: 3%; background-color: white">
     <ion-icon *ngIf="!b" name="caret-down-outline" style="color: red;" ></ion-icon> 
     <ion-icon *ngIf="b" name="caret-up-outline" style="color: red;" ></ion-icon> 
   <ion-label style="font-size: 17px; " (click)="back()"><strong> Least in 24h</strong></ion-label> 
   </div>
-  <ion-row *ngIf="b" style="height: 35%;" >
+  <ion-row *ngIf="b" style="height: 35%; background-color: white" >
     <ion-col style="width: 85%;">
       <ion-slides>
         <ion-slide *ngFor="let info of down.slice(y,5)" >
@@ -93,7 +93,7 @@
   </ion-row>
 
 <!-- COİN BAŞLIKLARI -->
-  <div style="margin-top: 15px;">
+  <div style="margin-top: 15px; background-color: white">
     
     <ion-row>
       <ion-col style="margin-left: 5%; color: gray;">Cryptocurrencies</ion-col>
@@ -106,7 +106,7 @@
 
 
   <!-- 10 COİN LİSTELEME -->
-  <ion-list>
+  <ion-list style="background-color: white">
     <ion-item *ngFor="let info of allcoininfo.slice(0,10)" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
       <ion-avatar slot="start">
         <img src="{{info.image}}" />
@@ -127,7 +127,7 @@
 </ion-content>
 
 
-<ion-footer style="border-top: 1px solid grey;">
+<ion-footer style="border-top: 1px solid grey; background-color: white">
   <div style="background-color: white;">
     <ion-row>
 

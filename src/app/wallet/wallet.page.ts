@@ -16,10 +16,12 @@ export class WalletPage implements OnInit {
   i:number=0;
   balance:number=JSON.parse(localStorage.getItem('balance'));
   wallet=JSON.parse(localStorage.getItem('wallet'));
-   xarray = [];
+  xarray = [];
+  totalValue:any = 0;
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
+    
     
     this.http.get(this.api_key).subscribe(data=>{
       this.allcoininfo=data;
@@ -27,17 +29,28 @@ export class WalletPage implements OnInit {
       this.update()
       console.log(this.wallet);
       console.log(this.xarray);
+
+
+      this.xarray.forEach((element) => {
+        this.totalValue+= element.amount*element.current_price;
+        console.log(element.amount);
+        console.log(element.current_price);
+        
+        });
+      console.log(this.totalValue);
       
     });
    
-  
+    
+    
     
 
-    this.btn=document.getElementById('btn');
-    this.divcolor=document.getElementById('divcolor');
+    
     this.changeColor('darkblue');
 
   }
+
+
   update(){
     this.wallet.forEach((element) => {
       let live = this.allcoininfo.find((x) => x.id == element.id);
@@ -77,6 +90,11 @@ export class WalletPage implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 1000);
+  }
+
+  history(){
+    
+    console.log("aa")
   }
 
 }
