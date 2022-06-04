@@ -26,7 +26,7 @@ export class DetailsPage implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getData();
     localStorage.setItem('balance',JSON.stringify(this.balance));
-   
+ 
     
    
   }
@@ -39,21 +39,29 @@ export class DetailsPage implements OnInit {
   butonOne(){
     this.bol=this.balance/4;
     this.count=this.bol/this.justcoininfo.current_price;
+    this.count=parseInt(this.count.toString().slice(0,7));
+
   }
 
   butonTwo(){
     this.bol=this.balance/2;
     this.count=this.bol/this.justcoininfo.current_price;
+    this.count=parseInt(this.count.toString().slice(0,7));
+
   }
 
   butonThree(){
     this.bol=this.balance/4*3;
     this.count=this.bol/this.justcoininfo.current_price;
+    this.count=parseInt(this.count.toString().slice(0,7));
+
   }
 
   butonFour(){
     this.bol=this.balance;
     this.count=this.bol/this.justcoininfo.current_price;
+    this.count=parseInt(this.count.toString().slice(0,7));
+
   }
 
   buy(){
@@ -98,6 +106,8 @@ export class DetailsPage implements OnInit {
       this.justcoininfo =this.coinallinfo.filter(x => x.id == this.id)
       this.justcoininfo=this.justcoininfo[0];
       console.log(this.justcoininfo)
+      
+      
     })
   }
 

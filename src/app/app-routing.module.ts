@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'sell/:id',
     loadChildren: () => import('./sell/sell.module').then( m => m.SellPageModule)
+  },
+  {
+    path: 'perpetual',
+    loadChildren: () => import('./perpetual/perpetual.module').then( m => m.PerpetualPageModule)
   }
 ];
 

@@ -38,6 +38,8 @@ export class SellPage implements OnInit {
       this.money=checkWallet.amount;
       this.count=checkWallet.amount/4;
       this.carp=this.count*this.justcoininfo.current_price;
+      this.carp=parseInt(this.carp.toString().slice(0,7));
+
     }else{
       this.uyari("You don't have this coin.","danger")
     }
@@ -50,6 +52,8 @@ export class SellPage implements OnInit {
       this.money=checkWallet.amount;
       this.count=checkWallet.amount/2;
       this.carp=this.count*this.justcoininfo.current_price;
+      this.carp=parseInt(this.carp.toString().slice(0,7));
+
     }else{
       this.uyari("You don't have this coin.","danger")
     }
@@ -61,6 +65,8 @@ export class SellPage implements OnInit {
       this.money=checkWallet.amount;
       this.count=checkWallet.amount/4*3;
       this.carp=this.count*this.justcoininfo.current_price;
+      this.carp=parseInt(this.carp.toString().slice(0,7));
+
     }else{
       this.uyari("You don't have this coin.","danger")
     }
@@ -72,6 +78,8 @@ export class SellPage implements OnInit {
       this.money=checkWallet.amount;
       this.count=checkWallet.amount;
       this.carp=this.count*this.justcoininfo.current_price;
+      this.carp=parseInt(this.carp.toString().slice(0,7));
+
     }else{
       this.uyari("You don't have this coin.","danger")
     }
