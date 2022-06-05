@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perpetual',
@@ -15,16 +14,18 @@ export class PerpetualPage implements OnInit {
   itemallinfo:any=[];
   word:string="";
   info:any=[];
-  i:number;
   count:number;
   bol:number;
+  openlist:number=0;
+  call:boolean=false;
 
-  constructor(private http: HttpClient, public toastController: ToastController) { }
+  constructor(private http: HttpClient, public toastController: ToastController,public navCtrl: NavController) { }
 
   ngOnInit() {
+
   }
 
-
+ 
 
   found(){
     if(this.word.length>0){
@@ -34,6 +35,7 @@ export class PerpetualPage implements OnInit {
       item.name.toLowerCase().includes(this.word.toLowerCase())
     );
     })
+    
     }else{
       this.itemallinfo=[];
     }
@@ -41,7 +43,17 @@ export class PerpetualPage implements OnInit {
 
   getData(info){
     this.info=info;
+    this.openlist=1;
+    this.itemallinfo=[];
+    this.word="";
     console.log(this.info)
+  }
+
+  getSearch(){
+    this.call=true;
+    (<HTMLInputElement>document.getElementById("getSearch")).focus();
+    console.log("a")
+ 
   }
 
   customFormatter(value: number) {

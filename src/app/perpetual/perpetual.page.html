@@ -2,11 +2,11 @@
 <ion-content style="background-color: white;">
   <!-- Searchbar and balance -->
   <div>
-    <ion-row style="background-color: white; padding: 1%;">
+    <ion-row style="background-color: white; padding: 1%;" >
       <ion-col>
-        <ion-searchbar placeholder="Bitcoin" [(ngModel)]="word" (ngModelChange)="found()"></ion-searchbar>
+        <ion-searchbar placeholder="Bitcoin" [(ngModel)]="word" (ngModelChange)="found()" *ngIf="call==true "></ion-searchbar>
         <ion-list >
-          <ion-item *ngFor="let info of itemallinfo" color="dark" (click)="getData(info)">
+          <ion-item *ngFor="let info of itemallinfo" color="dark" (click)="getData(info)"  >
             <ion-avatar slot="start">
               <img src="{{info.image}}" />
             </ion-avatar>
@@ -27,7 +27,7 @@
   </div>
 
   <!-- COİN LİSTELEME -->
-  <div>
+  <div *ngIf="openlist==1">
     <ion-card style="padding: 3%;">
       <ion-row>
         <ion-col style="justify-content: center; display: flex;">
@@ -39,48 +39,69 @@
         </ion-col>
       </ion-row>
       <!-- YÜZDELİK BUTONLAR -->
-<div style="text-align: center; padding: 2%;">
-  <ion-row>
-    <ion-col size="11" style="justify-content: center; display: flex;">
-      <ion-item style="border: 1px solid black; width: 50%; text-align: center; margin-right: 30px; margin-bottom: 7px;">
-        <ion-input type="number" placeholder="Balance" [(ngModel)]="count" ></ion-input>
-      </ion-item>
-      <div style="margin-top: 12px; text-align: center;">
-      <ion-label style="font-size: 15px; color: red;">${{bol&&bol.toFixed(2)}}</ion-label>
-      </div>
-    </ion-col>
-    <ion-col>
-      <button (click)="butonOne()" class="butonhalf">
-        25%
-      </button>
-    </ion-col>
-    <ion-col>
-      <button (click)="butonTwo()" class="butonhalf">
-        50%
-      </button>
-    </ion-col>
-    <ion-col>
-      <button (click)="butonThree()" class="butonhalf">
-        75%
-      </button>
-    </ion-col>
-    <ion-col>
-      <button (click)="butonFour()" class="butonhalf">
-        100%
-      </button>
-    </ion-col>
-  </ion-row>
-</div>
+  <div style="text-align: center; padding: 2%;">
+    <ion-row>
+      <ion-col size="11" style="justify-content: center; display: flex;">
+        <ion-item style="border: 1px solid black; width: 50%; text-align: center; margin-right: 30px; margin-bottom: 7px;">
+          <ion-input type="number" placeholder="Balance" [(ngModel)]="count" ></ion-input>
+        </ion-item>
+        <div style="margin-top: 12px; text-align: center;">
+        <ion-label style="font-size: 15px; color: red;">${{bol&&bol.toFixed(2)}}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonOne()" class="butonhalf">
+          25%
+        </button>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonTwo()" class="butonhalf">
+          50%
+        </button>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonThree()" class="butonhalf">
+          75%
+        </button>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonFour()" class="butonhalf">
+          100%
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
       <ion-item>
-        <ion-range  min="2" max="50" step="2" snaps="true" color="danger"  [pinFormatter]="customFormatter" [pin]="true">
+        <ion-range  min="2" max="50" step="2" snaps="true" color="danger"  [pinFormatter]="customFormatter" [pin]="true" >
           <ion-label slot="start">2</ion-label>
           <ion-label slot="end">50</ion-label>
         </ion-range>
       </ion-item>
+      <!-- BUY-SELL -->
+      <div >
+        <ion-row style="text-align: center;" >
+          <ion-col>
+            <ion-button color="success" expand="full" >
+            Buy
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="danger" expand="full" >
+            Sell
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
     </ion-card>
   </div>
-</ion-content>
+  <div *ngIf="openlist==0" style="text-align: center; margin-top: 50%;">
+    <ion-icon name="search-circle-outline" style="font-size: 60px;" (click)="getSearch()" ></ion-icon>
+    <h2><strong>CHOOSE ONE COİN</strong></h2>
+  </div>
 
+
+  
+</ion-content>
 
 <ion-footer style="border-top: 1px solid grey; background-color: white">
   <div style="background-color: white;">
