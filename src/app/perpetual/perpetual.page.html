@@ -1,7 +1,7 @@
 
 <ion-content style="background-color: white;">
   <!-- Searchbar and balance -->
-  <div>
+  <div >
     <ion-row style="background-color: white; padding: 1%;" >
       <ion-col>
         <ion-searchbar placeholder="Bitcoin" [(ngModel)]="word" (ngModelChange)="found()" *ngIf="call==true "></ion-searchbar>
@@ -21,13 +21,13 @@
         </ion-list >
       </ion-col>
       <ion-col style="text-align: center; display: flex; align-items: center;" *ngIf="!word">
-        <ion-label>Balance: ${{balance.toFixed(2)}}</ion-label>
+        <ion-label *ngIf="call==true ">Balance: ${{balance.toFixed(2)}}</ion-label>
       </ion-col>
     </ion-row>
   </div>
 
   <!-- COİN LİSTELEME -->
-  <div *ngIf="openlist==1">
+  <div *ngIf="openlist==2">
     <ion-card style="padding: 3%;">
       <ion-row>
         <ion-col style="justify-content: center; display: flex;">
@@ -38,6 +38,7 @@
           <ion-label style="font-size: 15px; color: black; text-align: center;">Price: <strong>${{info.current_price}}</strong></ion-label>
         </ion-col>
       </ion-row>
+
       <!-- YÜZDELİK BUTONLAR -->
   <div style="text-align: center; padding: 2%;">
     <ion-row>
@@ -72,7 +73,7 @@
     </ion-row>
   </div>
       <ion-item>
-        <ion-range  min="2" max="50" step="2" snaps="true" color="danger"  [pinFormatter]="customFormatter" [pin]="true" >
+        <ion-range  min="2" max="50" step="2" snaps="true" color="danger" id="value" [pinFormatter]="customFormatter" [pin]="true" >
           <ion-label slot="start">2</ion-label>
           <ion-label slot="end">50</ion-label>
         </ion-range>
@@ -81,23 +82,42 @@
       <div >
         <ion-row style="text-align: center;" >
           <ion-col>
-            <ion-button color="success" expand="full" >
-            Buy
+            <ion-button color="success" expand="full" (click)="long()">
+            Long
             </ion-button>
           </ion-col>
           <ion-col>
             <ion-button color="danger" expand="full" >
-            Sell
+            Short
             </ion-button>
           </ion-col>
         </ion-row>
       </div>
     </ion-card>
   </div>
-  <div *ngIf="openlist==0" style="text-align: center; margin-top: 50%;">
+  <div *ngIf="openlist==0 " style="text-align: center; margin-top: 50%;" >
     <ion-icon name="search-circle-outline" style="font-size: 60px;" (click)="getSearch()" ></ion-icon>
     <h2><strong>CHOOSE ONE COİN</strong></h2>
   </div>
+  <!-- Progress Bar -->
+  <ion-progress-bar color="danger"></ion-progress-bar>
+  <!-- Click Long -->
+  <ion-list *ngFor="let item of perpetualwallet">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{item.img}}" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.id}}</h2>
+        <h3><span >Price: </span><strong >{{item.price}}$</strong> </h3>
+        <span style="font-size: 15px; "><strong>{{item.newprice}}$ -- {{item.x}}x</strong></span>
+      </ion-label>
+      <ion-label>
+        <span style="font-size: 15px; float: right;" ><strong >{{item.amount}} {{item.symbol}}</strong> </span><br>
+        <span style="font-size: 15px; float: right;"  [ngStyle]="{'color': (item.price<info.current_price) ? 'red' : 'green' }"><strong>%{{(item.newbalance*item.x)/100}}</strong> </span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 
   

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -14,18 +14,66 @@ export class PerpetualPage implements OnInit {
   itemallinfo:any=[];
   word:string="";
   info:any=[];
-  count:number;
+  count:number=0;
   bol:number;
   openlist:number=0;
   call:boolean=false;
+  value:any;
+  newbalance:number;
+  newcount:number;
+  n:any;
+  perpetualwallet:any=[];
 
   constructor(private http: HttpClient, public toastController: ToastController,public navCtrl: NavController) { }
 
   ngOnInit() {
+    this.perpetualwallet=JSON.parse(localStorage.getItem("perpetualwallet")) || [];
+    if(!(localStorage.getItem("perpetualwallet") === null)){
+      this.openlist=1;
+      this.call=true;
+    }
+    
 
   }
 
- 
+  long(){
+    const input = document.getElementById('value') as HTMLInputElement | null;
+    this.value = input?.value;
+    if(this.value==0){
+      this.value=2;
+    }
+
+    if(this.count==0){
+      this.uyari("You have to choose 'X' and enter the 'Balance'",'danger');
+    }else{
+      this.newbalance=this.count*this.value;
+      this.newcount=this.newbalance/this.info.current_price
+      this.n=this.newcount.toFixed(2);
+      this.perpetualwallet=[
+        ...this.perpetualwallet,
+        {
+          id: this.info.id,
+          symbol:this.info.symbol,
+          img: this.info.image,
+          x: this.value,
+          newbalance: this.newbalance,
+          amount: this.n,
+          price: this.info.current_price
+        },
+      ];
+      localStorage.setItem("perpetualwallet",JSON.stringify(this.perpetualwallet))
+    }
+
+
+
+
+
+    console.log(this.value) // 👉️ "Initial value"
+   
+    
+    
+  }
+
 
   found(){
     if(this.word.length>0){
@@ -43,7 +91,7 @@ export class PerpetualPage implements OnInit {
 
   getData(info){
     this.info=info;
-    this.openlist=1;
+    this.openlist=2;
     this.itemallinfo=[];
     this.word="";
     console.log(this.info)
@@ -51,13 +99,14 @@ export class PerpetualPage implements OnInit {
 
   getSearch(){
     this.call=true;
-    (<HTMLInputElement>document.getElementById("getSearch")).focus();
     console.log("a")
  
   }
 
-  customFormatter(value: number) {
+  customFormatter(value) {
+    
     return `${value}x`
+    
   }
 
   butonOne(){
@@ -78,5 +127,13 @@ export class PerpetualPage implements OnInit {
   butonFour(){
     this.bol=this.balance;
     this.count=parseInt(this.bol.toString().slice(0,7));
+  }
+  async uyari(mesaj,renk) {
+    const toast = await this.toastController.create({
+      message: mesaj,
+      color:renk,
+      duration: 1000,
+    });
+    toast.present();
   }
 }
