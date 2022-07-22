@@ -9,6 +9,7 @@ import { NavController, ToastController } from '@ionic/angular';
 })
 export class PerpetualPage implements OnInit {
 
+  percent:number=1;
   balance:number=JSON.parse(localStorage.getItem('balance'));
   api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   itemallinfo:any=[];
@@ -32,8 +33,9 @@ export class PerpetualPage implements OnInit {
       this.openlist=1;
       this.call=true;
     }
+    console.log(this.perpetualwallet)
     
-
+    
   }
 
   long(){

@@ -3,6 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>    <ion-title>    {{justcoininfo && justcoininfo.name}} ({{justcoininfo && justcoininfo.symbol}})  </ion-title>
+    <button id="myBtn" style="background-color: transparent;" slot="end" (click)="butonclick(justcoininfo)" *ngIf="icon==true">
+      <ion-icon slot="icon-only" name="star-outline"  color="{{color}}" style="font-size: 25px;"></ion-icon>
+    </button>
+    <button style="background-color: transparent;" slot="end" *ngIf="icon==false" (click)="remove(justcoininfo)">
+      <ion-icon slot="icon-only" name="star" color="{{color}}" style="font-size: 25px;" ></ion-icon>
+    </button>
   </ion-toolbar>
 </ion-header>
 

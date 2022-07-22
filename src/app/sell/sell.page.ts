@@ -20,6 +20,10 @@ export class SellPage implements OnInit {
   live:any;
   money:number=0;
   public wallet:any=JSON.parse(localStorage.getItem("wallet")) || [];
+  public wlist=JSON.parse(localStorage.getItem("wlist")) || [];
+  color:string="dark";
+  icon:boolean=true;
+  public i:number;
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
@@ -125,7 +129,72 @@ export class SellPage implements OnInit {
       this.coinallinfo=data;
       this.justcoininfo =this.coinallinfo.filter(x => x.id == this.id)
       this.justcoininfo=this.justcoininfo[0];
+
+
+
+      //KIRMIZI YILDIZ
+      console.log(this.justcoininfo.id+"aaa")
+      console.log(this.wlist)
+      let a=0;
+      this.wlist.forEach(element => {
+        if(element.id==this.justcoininfo.id){
+          a++;
+          if(a==0){
+            this.color="dark";
+          }
+          else{
+            this.color="danger";
+            this.icon=false;
+          }
+        }
+        
+      })
     })
+  }
+
+  butonclick(id){
+    let x =JSON.parse(localStorage.getItem("wlist")) || [];
+    console.log(x)
+    let a =0;
+    x.forEach(function(element) {
+      if(element.id==id.id){
+        a++
+      }
+    });
+    
+    if(a==1){
+      this.uyari('Coin watchlistinizde var.','danger');
+      
+      
+    }else{
+      this.color="danger";
+      this.icon=false;
+      x.push(id);
+      console.log("wlist: ",x)
+      localStorage.setItem("wlist",JSON.stringify(x));
+      
+      this.uyari('Coin watchlistinize başarıyla eklendi.','success');
+  
+  
+    }
+  
+  }
+
+ 
+
+  remove(id){
+    this.wlist.forEach((i,index)=>{
+      console.log(i.id+"i");
+      if(i.id==id.id) {
+        this.wlist.splice(index,1);
+        console.log(index+"index");
+        this.color="dark"
+        this.icon=true;
+        localStorage.setItem("wlist",JSON.stringify(this.wlist));
+      }});
+
+    this.uyari('Coin Watchlistinizden silindi.','danger');
+
   }
 
   async uyari(mesaj,renk) {

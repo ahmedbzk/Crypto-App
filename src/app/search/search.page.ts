@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { DetailsPage } from '../details/details.page';
 
 @Component({
   selector: 'app-search',
@@ -17,18 +18,32 @@ export class SearchPage implements OnInit {
   public itemallinfo:any=[];
   public iteminfo:any=[];
   i:number=0;
- 
+  page:boolean=true;
+  public wlist=JSON.parse(localStorage.getItem("wlist")) || [];
+  public watchlistnew:any=[];
 
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
+
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.http.get(this.api_key).subscribe(data=>{
       this.tencoininfo=data;
      
-      
+      var xarray = [];
+      this.wlist.forEach((element) => {
+        setTimeout(() => {
+          let live = this.tencoininfo.find((x) => x.id == element.id) ;
+          xarray.push(live);
+          console.log(xarray);
+          this.watchlistnew=xarray;
+        });
+        }, 1000);
     })
+
+   
+      
 
   }
 
@@ -58,12 +73,15 @@ export class SearchPage implements OnInit {
     
   }
 
+  changepage(){
+    console.log(this.page)
+    this.page=true;
+  }
+  changepageagain(){
+    console.log(this.page)
 
-
-
-
-  
-
+    this.page=false;
+  }
 
 
   morecrypto(){

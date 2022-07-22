@@ -103,18 +103,24 @@
   <ion-progress-bar color="danger"></ion-progress-bar>
   <!-- Click Long -->
   <ion-list *ngFor="let item of perpetualwallet">
-    <ion-item>
+    <ion-item style="height: auto; margin-top: 20px;">
+      
       <ion-avatar slot="start">
+
         <img src="{{item.img}}" />
       </ion-avatar>
       <ion-label>
+        <div >
+          <h2 style="color:green"><strong>LONG POSİTİON</strong></h2>
+        </div>
         <h2>{{item.id}}</h2>
         <h3><span >Price: </span><strong >{{item.price}}$</strong> </h3>
-        <span style="font-size: 15px; "><strong>{{item.newprice}}$ -- {{item.x}}x</strong></span>
+        <span style="font-size: 15px; color: red;"><strong>{{item.newbalance}}$ -- {{item.x}}x</strong></span>
       </ion-label>
       <ion-label>
         <span style="font-size: 15px; float: right;" ><strong >{{item.amount}} {{item.symbol}}</strong> </span><br>
-        <span style="font-size: 15px; float: right;"  [ngStyle]="{'color': (item.price<info.current_price) ? 'red' : 'green' }"><strong>%{{(item.newbalance*item.x)/100}}</strong> </span>
+        <span style="font-size: 15px; float: right;"  [ngStyle]="{'color': (item.price<info.current_price) ? 'red' : 'green' }"><strong>%{{(info.price_change_percentage_24h*item.x)}}</strong> </span><br>
+        <span style="font-size: 15px; float: right;" >Liq Fiyatı:</span>
       </ion-label>
     </ion-item>
   </ion-list>
