@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
-import { Style } from '@capacitor/status-bar';
+import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-folder',
@@ -21,8 +20,9 @@ export class FolderPage implements OnInit {
   f:boolean=true;
   b:boolean=true;
   name:any="";
-
-  constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
+  handlerMessage:string = '';
+  exita:string="exit";
+  constructor(private loadingCtrl: LoadingController,private navCtrl: NavController,private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController,private alertController: AlertController) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -95,5 +95,35 @@ export class FolderPage implements OnInit {
       duration: 1000,
     });
     toast.present();
+  }
+
+  async presentAlert() {
+    // const alert = await this.alertController.create({
+    //   header: 'LOG OUT',
+    //   message: 'If you log out, your account will be deleted. Do you confirm?',
+    //   buttons: ['OK']
+    // });
+    // console.log(this.exita)
+    // if(this.exita=='OK'){
+        console.log(this.exita+"a")
+        localStorage.clear();
+        this.showLoading();
+    //  }
+    // alert.present();
+
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Checking out in 3 seconds...',
+      duration: 3000
+      
+    });
+    
+    loading.present();
+    setTimeout(() => {
+      this.navCtrl.navigateRoot('/start');
+    }, 3000);
+
   }
 }
