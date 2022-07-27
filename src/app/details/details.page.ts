@@ -41,6 +41,7 @@ export class DetailsPage implements OnInit {
 
   butonOne(){
     this.bol=this.balance/4;
+    this.bol=parseInt(this.bol.toString().slice(0,9));
     this.count=this.bol/this.justcoininfo.current_price;
     this.count=parseInt(this.count.toString().slice(0,7));
 
@@ -48,6 +49,7 @@ export class DetailsPage implements OnInit {
 
   butonTwo(){
     this.bol=this.balance/2;
+    this.bol=parseInt(this.bol.toString().slice(0,9));
     this.count=this.bol/this.justcoininfo.current_price;
     this.count=parseInt(this.count.toString().slice(0,7));
 
@@ -55,6 +57,7 @@ export class DetailsPage implements OnInit {
 
   butonThree(){
     this.bol=this.balance/4*3;
+    this.bol=parseInt(this.bol.toString().slice(0,9));
     this.count=this.bol/this.justcoininfo.current_price;
     this.count=parseInt(this.count.toString().slice(0,7));
 
@@ -62,6 +65,7 @@ export class DetailsPage implements OnInit {
 
   butonFour(){
     this.bol=this.balance;
+    this.bol=parseInt(this.bol.toString().slice(0,9));
     this.count=this.bol/this.justcoininfo.current_price;
     this.count=parseInt(this.count.toString().slice(0,7));
 

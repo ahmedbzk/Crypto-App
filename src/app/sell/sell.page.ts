@@ -30,8 +30,8 @@ export class SellPage implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getData();
     localStorage.setItem('balance',JSON.stringify(this.balance));
-    console.log(this.wallet)
-     
+
+    
   }
 
   
@@ -130,11 +130,12 @@ export class SellPage implements OnInit {
       this.justcoininfo =this.coinallinfo.filter(x => x.id == this.id)
       this.justcoininfo=this.justcoininfo[0];
 
-
-
+      var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
+      if(checkWallet){
+        this.money=checkWallet.amount;
+      }
       //KIRMIZI YILDIZ
-      console.log(this.justcoininfo.id+"aaa")
-      console.log(this.wlist)
+      
       let a=0;
       this.wlist.forEach(element => {
         if(element.id==this.justcoininfo.id){
