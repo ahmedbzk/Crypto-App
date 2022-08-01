@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>    
+    <ion-title>    {{justcoininfo && justcoininfo.name}} ({{justcoininfo && justcoininfo.symbol}})  </ion-title>
+    <button id="myBtn" style="background-color: transparent;" slot="end" (click)="butonclick(justcoininfo)" *ngIf="icon==true">
+      <ion-icon slot="icon-only" name="star-outline"  color="{{color}}" style="font-size: 25px;"></ion-icon>
+    </button>
+    <button style="background-color: transparent;" slot="end" *ngIf="icon==false" (click)="remove(justcoininfo)">
+      <ion-icon slot="icon-only" name="star" color="{{color}}" style="font-size: 25px;" ></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: white;">
+
+
+
+  <!-- COİN İNFOLAR -->
+  <div style="padding: 5%; ">
+    <ion-row>
+      <ion-col>
+        <img src="{{justcoininfo && justcoininfo.image}}" style="height: 90%; border: 1px solid grey; border-radius: 50%; ">
+      </ion-col>
+      <ion-col style="text-align: center; ">
+        <!-- SELECT KISMI -->
+        <ion-segment style="height: 30%;" color="dark">
+          <ion-segment-button style="background-color: green; color: white;">
+            <ion-label style="font-size: 15px;">BUY</ion-label>
+          </ion-segment-button>
+          <ion-segment-button  (click)="sell()"  >
+            <ion-label style="font-size: 15px;">SELL</ion-label>
+          </ion-segment-button>
+        </ion-segment><br>
+        <label style="text-align: center; font-size: 20px;"><u>Price</u></label><br>
+        <label style=" font-size: 25px;"><strong>{{justcoininfo && justcoininfo.current_price}}$ </strong></label>
+    <ion-progress-bar color="dark" type="indeterminate" style="margin-top: 5px;" ></ion-progress-bar>
+
+      </ion-col>
+    </ion-row>
+    </div>
+
+      <!-- 24H DEĞİŞKENLİK -->
+  <div style="margin-bottom: 2%;">
+    <ion-row style="text-align: center;">
+      <ion-col> 
+
+        <ion-label>
+        <strong>
+          <u>High 24h</u><br>
+        </strong>  
+      </ion-label>
+
+        <ion-label style="color: green;">
+          <strong> 
+            {{justcoininfo && justcoininfo.high_24h}}$
+          </strong>
+        </ion-label>
+
+      </ion-col>
+
+      <ion-col> 
+        <ion-label>
+        <strong>
+          <u>Low 24h</u><br>
+        </strong>  
+      </ion-label>
+
+        <ion-label style="color: red;"><strong> {{justcoininfo && justcoininfo.low_24h}}$</strong></ion-label>
+
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- COİN İNFOLAR 2 -->
+  <div style="padding: 3%; font-size: 17px;">
+    <ion-row>Market Cap Rank --><strong>{{justcoininfo && justcoininfo.market_cap_rank}}</strong></ion-row>
+    <ion-row style="margin-top: 5px;">Total Supply --> <strong>{{justcoininfo && justcoininfo.total_supply}}</strong></ion-row>
+    <ion-row style="margin-top: 5px;">Ath --><strong>{{justcoininfo && justcoininfo.ath}}</strong></ion-row>
+    <ion-row style="margin-top: 5px;">Ath Change Percentage--> <strong>%{{justcoininfo && justcoininfo.ath_change_percentage.toFixed(2)}}</strong></ion-row>
+  </div>
+
+<!-- YÜZDELİK BUTONLAR -->
+<div style="text-align: center; padding: 2%;">
+  <ion-row>
+    <ion-col size="11" style="justify-content: center; display: flex;">
+      <ion-item style="border: 1px solid black; width: 50%; text-align: center; margin-right: 30px; margin-bottom: 7px;">
+        <ion-input type="number" placeholder="Count" [(ngModel)]="count" ></ion-input>
+      </ion-item>
+      <div style="margin-top: 3px;">
+      <ion-label style="margin-bottom: 5px;  color: gray; font-size: 17px;">Balance: {{balance.toFixed(2)}}$</ion-label><br>
+      <ion-label style="  color: red;">${{bol}}</ion-label>
+      </div>
+    </ion-col>
+    <ion-col>
+      <button (click)="butonOne()" class="butonhalf">
+        25%
+      </button>
+    </ion-col>
+    <ion-col>
+      <button (click)="butonTwo()" class="butonhalf">
+        50%
+      </button>
+    </ion-col>
+    <ion-col>
+      <button (click)="butonThree()" class="butonhalf">
+        75%
+      </button>
+    </ion-col>
+    <ion-col>
+      <button (click)="butonFour()" class="butonhalf">
+        100%
+      </button>
+    </ion-col>
+  </ion-row>
+</div>
+
+  <!-- BUY AND SELL -->
+  <div >
+    <ion-row style="text-align: center;" >
+
+      <ion-col>
+        <ion-button color="success" expand="full" (click)="buy()">
+        Buy
+        </ion-button>
+      </ion-col>
+      
+      
+
+    </ion-row>
+  </div>
+</ion-content>
+
+
+
+
+
+<ion-footer style="border-top: 1px solid grey;">
+  <div style="background-color: white;">
+    <ion-row>
+
+      <ion-col style="text-align: center;"  >
+        <ion-icon name="home-outline" style="font-size: 27px; color: black;" [routerLink]="['/folder']" routerLinkActive="router-link-active"></ion-icon><br>
+        <ion-label style="font-size: 10px; color: black;"><strong>Home</strong></ion-label>
+
+      </ion-col>
+      <ion-col style="text-align: center; " >
+        <ion-icon name="search-sharp" style="font-size: 27px; margin-right: 15px; color: black;" [routerLink]="['/search']" routerLinkActive="router-link-active" ></ion-icon><br>
+        <ion-label style="font-size: 10px; margin-right: 15px; color: black;"><strong>Search</strong></ion-label>
+      </ion-col>
+
+        <ion-col>
+          <div style="background-color: rgb(75,181,67); border-radius: 60%; height: 100%; text-align: center;" >
+            <ion-icon name="logo-bitcoin" class="bitcoin"></ion-icon><br>
+          </div>
+        </ion-col>
+
+      <ion-col style="text-align: center">
+        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Wallet</strong></ion-label>
+      </ion-col>
+
+      <ion-col style="text-align: center" [routerLink]="['/perpetual']" routerLinkActive="router-link-active"  >
+        <ion-icon name="bar-chart-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px; color: black;"><strong>Futures</strong></ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

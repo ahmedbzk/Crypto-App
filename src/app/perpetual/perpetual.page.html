@@ -1,0 +1,163 @@
+
+<ion-content style="background-color: white;">
+  <!-- Searchbar and balance -->
+  <div >
+    <ion-row style="background-color: white; padding: 1%;" >
+      <ion-col>
+        <ion-searchbar placeholder="Bitcoin" [(ngModel)]="word" (ngModelChange)="found()" *ngIf="call==true "></ion-searchbar>
+        <ion-list >
+          <ion-item *ngFor="let info of itemallinfo" color="dark" (click)="getData(info)"  >
+            <ion-avatar slot="start">
+              <img src="{{info.image}}" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{info.name}}</h2>
+              <h3>Price:<strong >{{info.current_price}}$</strong> </h3>
+            </ion-label>
+            <ion-label>
+              <span style="margin-left: 55%; font-size: 15px;"  [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }"><strong>%{{info.price_change_percentage_24h.toFixed(2)}}</strong> </span>
+            </ion-label>
+          </ion-item>
+        </ion-list >
+      </ion-col>
+      <ion-col style="text-align: center; display: flex; align-items: center;" *ngIf="!word">
+        <ion-label *ngIf="call==true ">Balance: ${{balance.toFixed(2)}}</ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- COİN LİSTELEME -->
+  <div *ngIf="openlist==2">
+    <ion-card style="padding: 3%;">
+      <ion-row>
+        <ion-col style="justify-content: center; display: flex;">
+          <img src="{{info.image}}" style="height: 80px">
+        </ion-col>
+        <ion-col style="justify-content: center; ">
+          <ion-card-title>{{info.name}}</ion-card-title><br>
+          <ion-label style="font-size: 15px; color: black; text-align: center;">Price: <strong>${{info.current_price}}</strong></ion-label>
+        </ion-col>
+      </ion-row>
+
+      <!-- YÜZDELİK BUTONLAR -->
+  <div style="text-align: center; padding: 2%;">
+    <ion-row>
+      <ion-col size="11" style="justify-content: center; display: flex;">
+        <ion-item style="border: 1px solid black; width: 50%; text-align: center; margin-right: 30px; margin-bottom: 7px;">
+          <ion-input type="number" placeholder="Balance" [(ngModel)]="count" ></ion-input>
+        </ion-item>
+        <div style="margin-top: 12px; text-align: center;">
+        <ion-label style="font-size: 15px; color: red;">${{bol&&bol.toFixed(2)}}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonOne()" class="butonhalf">
+          25%
+        </button>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonTwo()" class="butonhalf">
+          50%
+        </button>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonThree()" class="butonhalf">
+          75%
+        </button>
+      </ion-col>
+      <ion-col>
+        <button (click)="butonFour()" class="butonhalf">
+          100%
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+      <ion-item>
+        <ion-range  min="2" max="50" step="2" snaps="true" color="danger" id="value" [pinFormatter]="customFormatter" [pin]="true" >
+          <ion-label slot="start">2</ion-label>
+          <ion-label slot="end">50</ion-label>
+        </ion-range>
+      </ion-item>
+      <!-- BUY-SELL -->
+      <div >
+        <ion-row style="text-align: center;" >
+          <ion-col>
+            <ion-button color="success" expand="full" (click)="long()">
+            Long
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="danger" expand="full" >
+            Short
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+  </div>
+  <div *ngIf="openlist==0 " style="text-align: center; margin-top: 50%;" >
+    <ion-icon name="search-circle-outline" style="font-size: 60px;" (click)="getSearch()" ></ion-icon>
+    <h2><strong>CHOOSE ONE COİN</strong></h2>
+  </div>
+  <!-- Progress Bar -->
+  <ion-progress-bar color="danger"></ion-progress-bar>
+  <!-- Click Long -->
+  <ion-list *ngFor="let item of perpetualwallet">
+    <ion-item style="height: auto; margin-top: 20px;">
+      
+      <ion-avatar slot="start">
+
+        <img src="{{item.img}}" />
+      </ion-avatar>
+      <ion-label>
+        <div >
+          <h2 style="color:green"><strong>LONG POSİTİON</strong></h2>
+        </div>
+        <h2>{{item.id}}</h2>
+        <h3><span >Price: </span><strong >{{item.price}}$</strong> </h3>
+        <span style="font-size: 15px; color: red;"><strong>{{item.newbalance}}$ -- {{item.x}}x</strong></span>
+      </ion-label>
+      <ion-label>
+        <span style="font-size: 15px; float: right;" ><strong >{{item.amount}} {{item.symbol}}</strong> </span><br>
+        <span style="font-size: 15px; float: right;"  [ngStyle]="{'color': (item.price<info.current_price) ? 'red' : 'green' }"><strong>%{{(info.price_change_percentage_24h*item.x)}}</strong> </span><br>
+        <span style="font-size: 15px; float: right;" >Liq Fiyatı:</span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  
+</ion-content>
+
+<ion-footer style="border-top: 1px solid grey; background-color: white">
+  <div style="background-color: white;">
+    <ion-row>
+
+      <ion-col style="text-align: center;" [routerLink]="['/folder']" routerLinkActive="router-link-active"   >
+        <ion-icon name="home-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style="color: black;  font-size: 10px;"><strong>Home</strong></ion-label>
+
+      </ion-col>
+      <ion-col style="text-align: center; " >
+        <ion-icon name="search-sharp" style="font-size: 27px; margin-right: 15px; color: black;" [routerLink]="['/search']" routerLinkActive="router-link-active"></ion-icon><br>
+        <ion-label style="font-size: 10px; margin-right: 15px; color: black;"><strong>Search</strong></ion-label>
+      </ion-col>
+
+        <ion-col>
+          <div style="background-color: black; border-radius: 60%; height: 100%; text-align: center;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" >
+            <ion-icon name="logo-bitcoin" style="color: white; font-size: 40px; margin-top: 3px;"></ion-icon><br>
+          </div>
+        </ion-col>
+
+      <ion-col style="text-align: center"  >
+        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Wallet</strong></ion-label>
+      </ion-col>
+
+      <ion-col style="text-align: center" >
+        <ion-icon name="bar-chart-outline" style="font-size: 27px; color: blue;"></ion-icon><br>
+        <ion-label style=" font-size: 10px; color: blue;"><strong>Futures</strong></ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

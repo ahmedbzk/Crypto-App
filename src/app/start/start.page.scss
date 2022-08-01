@@ -1,0 +1,52 @@
+.divimiz{
+    background-color: grey;
+    margin-bottom: 13px; 
+    text-align: center; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex;
+}
+.imga{
+    height: 180px; 
+    margin-bottom: 10px; 
+    margin-top: 10%;
+    animation-name: rotate;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes rotate {
+    0%{
+      background-position: 0px 0px;
+      transform: scale(1);
+  
+    }
+    25%{
+      left: 40%;
+  
+      background-position: 610px 0px;
+      transform: scale(.5);
+    }
+    50%{
+      background-position: 0px 0px;
+      left: 0;
+      transform: scale(1);
+  
+    }
+    75%{
+      background-position: -610px 0px;
+      left: -40%;
+      transform: scale(0.5);
+  
+    }
+}  
+
+.buttona{
+    background-color: black;  
+    margin-top: 5%; 
+    height: 35%; 
+    width: 25%; 
+    border-radius: 60%;
+    
+    cursor: pointer;
+}

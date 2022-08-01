@@ -1,0 +1,31 @@
+.butonhalf{
+    background-color: black; 
+    border: 1px solid black; 
+    font-size: 15px; 
+    padding: 4px;
+    color: white;
+}
+
+.bitcoin{
+    color: white; 
+    font-size: 40px;
+    margin-top: 3px;
+    animation-name: rotate;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes rotate {
+    0%{
+      transform: scale(1);
+    }
+    25%{
+      transform: scale(0.8);
+    }
+    50%{
+      transform: scale(1);
+    }
+    75%{
+      transform: scale(0.8);
+    }
+}  
