@@ -101,10 +101,10 @@
     <div *ngIf="language=='ENG'">
 
     <!-- PRİCE VE PROGRESS BAR -->
-      <div style="padding: 3px; border-radius: 150px;">
+      <div style="padding: 3px; background-color: white;">
         <ion-row>
-          <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;">Coins</ion-col>
-          <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%;">USD:<strong>${{balance.toFixed(2)}}</strong></ion-col>
+          <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px; color: black;">Coins</ion-col>
+          <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%; color: black;">USD:<strong>${{balance.toFixed(2)}}</strong></ion-col>
           <ion-progress-bar color="primary" value="1"></ion-progress-bar>
         </ion-row>
       </div>
@@ -132,10 +132,10 @@
     <div *ngIf="language=='TR'">
 
       <!-- PRİCE VE PROGRESS BAR -->
-        <div style="padding: 3px; border-radius: 150px;">
+        <div style="padding: 3px;  background-color: white;">
           <ion-row>
-            <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;">Kriptolar</ion-col>
-            <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%;">Dolar:<strong>${{balance.toFixed(2)}}</strong></ion-col>
+            <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px; color: black;">Kriptolar</ion-col>
+            <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%; color: black;">Dolar:<strong>${{balance.toFixed(2)}}</strong></ion-col>
             <ion-progress-bar color="primary" value="1"></ion-progress-bar>
           </ion-row>
         </div>

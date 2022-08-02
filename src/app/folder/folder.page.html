@@ -27,7 +27,7 @@
         align-items: flex-end;
         flex-direction: column;
         color: red;" >
-          <button (click)="presentAlert()" style="background-color: transparent; margin-right: 5px;" >
+          <button (click)="presentAlerttr()" style="background-color: transparent; margin-right: 5px;" >
             <ion-icon name="exit-outline" style="font-size: 35px;  color:red" ></ion-icon>
           </button>
           <ion-label style="font-size: 15px; margin-right: 2%; font-family:Arial, Helvetica, sans-serif">Log Out</ion-label>
@@ -40,18 +40,19 @@
     <div style="padding: 3%; height: 3%; background-color: white;">
         <ion-icon *ngIf="f" name="caret-up-outline" style="color: green;" ></ion-icon> 
         <ion-icon *ngIf="!f" name="caret-down-outline" style="color: green;" ></ion-icon> 
-      <ion-label style="font-size: 17px;" (click)="forward()" ><strong> Highest in 24h</strong></ion-label> 
+      <ion-label style="font-size: 17px; color: black;" (click)="forward()" ><strong>
+        24h Highest</strong></ion-label> 
     </div>
     <ion-row  *ngIf="f" style="height: 35%; background-color: white">
       <ion-col style="width: 85%;">
         <ion-slides style="margin-top: 5px; ">
           <ion-slide *ngFor="let info of up.slice(x,5)" >
-            <ion-card style="height: 50%; width: 90%; " [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+            <ion-card style="height: 50%; width: 90%; background-color: white;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
               <ion-row>
                 <ion-col>        
                   <img src="{{info.image}}" style="height: 100px;">
                 </ion-col>
-                <ion-col style="text-align: center; margin-top: 18%;">        
+                <ion-col style="text-align: center; margin-top: 18%; color: black;">        
                   <label style="font-size: 20px;  color: black; margin-top: 10px; text-align: center;" ><strong>{{info.name}}</strong></label>
                 </ion-col>
               </ion-row>
@@ -72,13 +73,13 @@
     <div style="padding: 3%; height: 3%; background-color: white">
       <ion-icon *ngIf="!b" name="caret-down-outline" style="color: red;" ></ion-icon> 
       <ion-icon *ngIf="b" name="caret-up-outline" style="color: red;" ></ion-icon> 
-    <ion-label style="font-size: 17px; " (click)="back()"><strong> Least in 24h</strong></ion-label> 
+    <ion-label style="font-size: 17px; color: black;" (click)="back()"><strong>24h Lowest</strong></ion-label> 
     </div>
     <ion-row *ngIf="b" style="height: 35%; background-color: white" >
       <ion-col style="width: 85%;">
         <ion-slides>
           <ion-slide *ngFor="let info of down.slice(y,5)" >
-            <ion-card style="height: 50%; width: 90%;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+            <ion-card style="height: 50%; width: 90%; background-color:white;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
               <ion-row>
                 <ion-col>        
                   <img src="{{info.image}}" style="height: 100px;">
@@ -103,10 +104,10 @@
     </div>
 
   <!-- COİN BAŞLIKLARI -->
-    <div style="margin-top: 15px; background-color: white">
+    <div style="margin-top: 15px; background-color: black">
       
       <ion-row>
-        <ion-col style="margin-left: 5%; color: gray;">Cryptocurrencies</ion-col>
+        <ion-col style="margin-left: 5%; color: white;"><u>Cryptocurrencies</u></ion-col>
         <ion-col >
           
         </ion-col>
@@ -164,18 +165,18 @@
     <div style="padding: 3%; height: 3%; background-color: white;">
         <ion-icon *ngIf="f" name="caret-up-outline" style="color: green;" ></ion-icon> 
         <ion-icon *ngIf="!f" name="caret-down-outline" style="color: green;" ></ion-icon> 
-      <ion-label style="font-size: 17px;" (click)="forward()" ><strong>24s En fazla yükselenler</strong></ion-label> 
+      <ion-label style="font-size: 17px; color: black;" (click)="forward()" ><strong>24s En fazla yükselenler</strong></ion-label> 
     </div>
     <ion-row  *ngIf="f" style="height: 35%; background-color: white">
       <ion-col style="width: 85%;">
         <ion-slides style="margin-top: 5px; ">
           <ion-slide *ngFor="let info of up.slice(x,5)" >
-            <ion-card style="height: 50%; width: 90%; " [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+            <ion-card style="height: 50%; width: 90%; background-color: white;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
               <ion-row>
                 <ion-col>        
                   <img src="{{info.image}}" style="height: 100px;">
                 </ion-col>
-                <ion-col style="text-align: center; margin-top: 18%;">        
+                <ion-col style="text-align: center; margin-top: 18%; color: black;">        
                   <label style="font-size: 20px;  color: black; margin-top: 10px; text-align: center;" ><strong>{{info.name}}</strong></label>
                 </ion-col>
               </ion-row>
@@ -196,13 +197,13 @@
     <div style="padding: 3%; height: 3%; background-color: white">
       <ion-icon *ngIf="!b" name="caret-down-outline" style="color: red;" ></ion-icon> 
       <ion-icon *ngIf="b" name="caret-up-outline" style="color: red;" ></ion-icon> 
-    <ion-label style="font-size: 17px; " (click)="back()"><strong>24s En fazla düşenler</strong></ion-label> 
+    <ion-label style="font-size: 17px; color: black;" (click)="back()"><strong>24s En fazla düşenler</strong></ion-label> 
     </div>
     <ion-row *ngIf="b" style="height: 35%; background-color: white" >
       <ion-col style="width: 85%;">
         <ion-slides>
           <ion-slide *ngFor="let info of down.slice(y,5)" >
-            <ion-card style="height: 50%; width: 90%;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+            <ion-card style="height: 50%; width: 90%; background-color:white;" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
               <ion-row>
                 <ion-col>        
                   <img src="{{info.image}}" style="height: 100px;">
@@ -227,10 +228,10 @@
     </div>
 
   <!-- COİN BAŞLIKLARI -->
-    <div style="margin-top: 15px; background-color: white">
+    <div style="margin-top: 15px; background-color: black">
       
       <ion-row>
-        <ion-col style="margin-left: 5%; color: gray;">Kripto Paralar</ion-col>
+        <ion-col style="margin-left: 5%; color: white;"><u>Kripto Paralar</u></ion-col>
         <ion-col >
           
         </ion-col>

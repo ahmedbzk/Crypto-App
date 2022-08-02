@@ -19,7 +19,7 @@
     <ion-list-header style="color: white; background-color: rgb(37, 34, 34); ">Language</ion-list-header>
     <ion-item style="margin-top: 15px;">
       <ion-label>{{langtr}}</ion-label>
-      <ion-checkbox color="primary" slot="start" (click)="turntr()"></ion-checkbox>
+      <ion-checkbox color="primary" slot="start" (click)="turntr()" [routerLink]="['/folder']" routerLinkActive="router-link-active" ></ion-checkbox>
       <img src="assets/turkey.png" alt="Turkey" style="height: 25px; position: absolute; margin-left: 85%;">
     </ion-item>
     <ion-item>
@@ -55,7 +55,7 @@
     </ion-item>
     <ion-item>
       <ion-label >{{langeng}}</ion-label>
-      <ion-checkbox color="primary"  slot="start"  (click)="turneng()"></ion-checkbox>
+      <ion-checkbox color="primary"  slot="start"  (click)="turneng()" [routerLink]="['/folder']" routerLinkActive="router-link-active" ></ion-checkbox>
       <img src="assets/united-kingdom.png" alt="United Kingdom" style="height: 25px; position: absolute; margin-left: 85%;">
     </ion-item>
   </ion-list>
@@ -70,7 +70,7 @@
 
   <ion-progress-bar style="margin-top: 40px;" color="dark"></ion-progress-bar>
 
-  <ion-button style="margin-top: 20%; margin-left: 4%;" color="dark" (click)="confirm()">
+  <ion-button style="margin-top: 20%; margin-left: 4%;" color="dark" (click)="confirmtr()">
       ONAYLA
   </ion-button>
 </div>

@@ -26,8 +26,19 @@ export class SettingsPage implements OnInit {
     }
     else{
       localStorage.setItem('title', JSON.stringify(this.name)); 
-      window.location.reload();
       this.uyari("Success","success")
+
+    }
+
+  }
+  confirmtr(){
+    console.log(this.name)
+    if(this.name==undefined){
+      this.uyari("İsim girmelisiniz...","danger")
+    }
+    else{
+      localStorage.setItem('title', JSON.stringify(this.name)); 
+      this.uyari("Başarılı...","success")
 
     }
 
@@ -39,9 +50,7 @@ export class SettingsPage implements OnInit {
     this.language=localStorage.setItem('language',this.language)
     console.log(this.language)
     this.uyari("Başarıyla dil değiştirdiniz","success")
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    
   }
 
   turneng(){
@@ -49,9 +58,7 @@ export class SettingsPage implements OnInit {
     this.language=localStorage.setItem('language',this.language)
     console.log(this.language)
     this.uyari("You have successfully changed language","success")
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    
   }
 
 
