@@ -9,6 +9,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./wallet.page.scss'],
 })
 export class WalletPage implements OnInit {
+  language=localStorage.getItem('language');
   public allcoininfo:any=[];
   public api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   public btn:any;
@@ -83,9 +84,7 @@ export class WalletPage implements OnInit {
     }
   }
 
-  settings(){
-    
-  }
+ 
 
 
   doRefresh(event) {

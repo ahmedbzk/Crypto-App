@@ -11,6 +11,7 @@ import { DetailsPage } from '../details/details.page';
 })
 export class SearchPage implements OnInit {
   id:string;
+  language=localStorage.getItem('language');
   public api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   public tencoininfo:any=[];
   more:number=10;

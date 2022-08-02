@@ -1,4 +1,5 @@
-<div style="text-align: center; justify-content: center;  padding: 5%; background-color: white; height: 100%;">
+<div style="text-align: center; justify-content: center;  padding: 5%; background-color: white; height: 100%;" *ngIf="selectoption!==langtwo">
+  
   <img src="assets/bitcoinimage.jpg" class="imga">
   <br>
   <strong >
@@ -12,17 +13,23 @@
       <ion-input placeholder="$$ Write trade money $$" type="number" style="text-align: center;" [(ngModel)]="balance"></ion-input>
     </ion-item>
     </div>
+    <ion-item style="margin-bottom: 15px;">
+      <ion-label>Language</ion-label>
+      <ion-select placeholder="Select" style="color: red;" [(ngModel)]="selectoption" >
+        <ion-select-option value="TR" >{{langtwo}}</ion-select-option>
+        <ion-select-option value="ENG" >{{langone}}</ion-select-option>
+      </ion-select>
+    </ion-item>
   </strong>
-  <strong>
-  WELCOME THE CRYPTO APP. İF ARE YOU WANT TO BUY SOME COİN AND TOKEN, YOU ARE TRUE PLACE.
+  <strong style="font-size: 15px;">
+  Welcome the Crypto App. If are you want to buy some coin or token, you are true place.
   </strong>
-  <br>
   <br>
   <br>
   <div >
-  <strong >
+  <strong style="font-size: 15px;">
 
-    CLİCK BİTCOİN AND ENTER THE APP.<br>
+    Click bitcoin and enter the app.<br>
   </strong>
   
   <ion-icon name="arrow-down-circle-sharp" style="font-size: 30px; margin-top: 3px;"></ion-icon>
@@ -32,3 +39,45 @@
   </button>
   </div>
 </div>
+
+<div style="text-align: center; justify-content: center;  padding: 5%; background-color: white; height: 100%;" *ngIf="selectoption==langtwo">
+  
+  <img src="assets/bitcoinimage.jpg" class="imga">
+  <br>
+  <strong >
+    <div class="divimiz">
+      <ion-item >
+        <ion-input placeholder="İsminizi yazınız..." type="text" style="text-align: center;" [(ngModel)]="title"></ion-input>
+      </ion-item>
+    </div>
+    <div class="divimiz">
+    <ion-item >
+      <ion-input placeholder="İstediğiniz para miktarı? ($)" type="number" style="text-align: center;" [(ngModel)]="balance"></ion-input>
+    </ion-item>
+    </div>
+    <ion-item style="margin-bottom: 15px;">
+      <ion-label>Dil</ion-label>
+      <ion-select placeholder="Select" style="color: red;" [(ngModel)]="selectoption" >
+        <ion-select-option value="TR" >{{langtwo}}</ion-select-option>
+        <ion-select-option value="ENG" >{{langone}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </strong>
+  <strong style="font-size: 15px;">
+  Kripto Uygulamasına Hoşgeldiniz. Eğer birkaç coin ve token alıp satmak, kendinizi denemek istiyorsanız, doğru yerdesiniz...
+  </strong>
+  <br>
+  <br>
+  <div >
+  <strong style="font-size: 15px;">
+
+    Bitcoin logosuna tıklayın ve uygulamaya giriş yapın.<br>
+  </strong>
+  
+  <ion-icon name="arrow-down-circle-sharp" style="font-size: 30px; margin-top: 3px;"></ion-icon>
+<br>
+  <button (click)="sendtr()" class="buttona">
+    <ion-icon name="logo-bitcoin" style="font-size: 50px; color: white;"></ion-icon>
+  </button>
+  </div>
+</div> 

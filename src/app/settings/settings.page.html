@@ -1,9 +1,78 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-buttons slot="start" *ngIf="language=='TR'">
+      <ion-back-button text="Geri"></ion-back-button>
+    </ion-buttons>    
+    <ion-buttons slot="start" *ngIf="language=='ENG'">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>      
+    <ion-title *ngIf="language=='ENG'">Settings</ion-title>
+    <ion-title *ngIf="language=='TR'">Ayarlar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<div *ngIf="language=='ENG'">
+  <!-- LANGUAGE -->
+  <ion-list>
+    <ion-list-header style="color: white; background-color: rgb(37, 34, 34); ">Language</ion-list-header>
+    <ion-item style="margin-top: 15px;">
+      <ion-label>{{langtr}}</ion-label>
+      <ion-checkbox color="primary" slot="start" (click)="turntr()"></ion-checkbox>
+      <img src="assets/turkey.png" alt="Turkey" style="height: 25px; position: absolute; margin-left: 85%;">
+    </ion-item>
+    <ion-item>
+      <ion-label>{{langeng}}</ion-label>
+      <ion-checkbox color="primary"  slot="start" checked="{{checked}}"></ion-checkbox>
+      <img src="assets/united-kingdom.png" alt="United Kingdom" style="height: 25px; position: absolute; margin-left: 85%;">
+    </ion-item>
+  </ion-list>
+
+  <!-- NAME -->
+  <ion-list style="margin-top: 30px;">
+    <ion-list-header style="color: white; background-color: rgb(37, 34, 34); ">Change Your Name</ion-list-header>
+    <div style="margin-top: 20px; margin-left: 5%; border: 1px solid black; width: 50%; text-align: left;">
+      <ion-input placeholder="Enter the new name" [(ngModel)]="name"></ion-input>
+    </div>
+  </ion-list>
+
+  <ion-progress-bar style="margin-top: 40px;" color="dark"></ion-progress-bar>
+
+  <ion-button style="margin-top: 20%; margin-left: 4%;" color="dark" (click)="confirm()">
+      CONFİRM
+  </ion-button>
+</div>
+
+<div *ngIf="language=='TR'">
+  <!-- LANGUAGE -->
+  <ion-list >
+    <ion-list-header style="color: white; background-color: rgb(37, 34, 34); ">Diller</ion-list-header>
+    <ion-item style="margin-top: 15px;">
+      <ion-label >{{langtr}}</ion-label>
+      <ion-checkbox color="primary" slot="start" checked="{{checked}}" ></ion-checkbox>
+      <img src="assets/turkey.png" alt="Turkey" style="height: 25px; position: absolute; margin-left: 85%;">
+    </ion-item>
+    <ion-item>
+      <ion-label >{{langeng}}</ion-label>
+      <ion-checkbox color="primary"  slot="start"  (click)="turneng()"></ion-checkbox>
+      <img src="assets/united-kingdom.png" alt="United Kingdom" style="height: 25px; position: absolute; margin-left: 85%;">
+    </ion-item>
+  </ion-list>
+
+  <!-- NAME -->
+  <ion-list style="margin-top: 30px;">
+    <ion-list-header style="color: white; background-color: rgb(37, 34, 34); ">İsmini Değiştir</ion-list-header>
+    <div style="margin-top: 20px; margin-left: 5%; border: 1px solid black; width: 50%; text-align: left;">
+      <ion-input placeholder="Yeni İsim" [(ngModel)]="name"></ion-input>
+    </div>
+  </ion-list>
+
+  <ion-progress-bar style="margin-top: 40px;" color="dark"></ion-progress-bar>
+
+  <ion-button style="margin-top: 20%; margin-left: 4%;" color="dark" (click)="confirm()">
+      ONAYLA
+  </ion-button>
+</div>
 
 </ion-content>

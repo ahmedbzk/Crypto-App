@@ -8,16 +8,19 @@ import { NavController, ToastController } from '@ionic/angular';
 })
 
 export class StartPage implements OnInit {
+  selectoption:string;
   title:string="";
   balance:number;
-  
+  langone:string="ENG";
+  langtwo:string="TR";
+  check:boolean=true;
 
   constructor(public toastController: ToastController,private navCtrl: NavController) { 
     
   }
 
   ngOnInit() {
-    
+    console.log(this.selectoption)
   }
 
   send(){
@@ -28,8 +31,17 @@ export class StartPage implements OnInit {
     else if(!(this.balance) || this.balance<10000){
       this.uyari("You must enter the money and you must start minimum 10000 dolars.","danger")
     }
+    else if(this.selectoption==undefined){
+      this.uyari("You must choose the language","danger")
+    }
     
     else{
+      if(this.selectoption=="TR"){
+        localStorage.setItem('language',this.selectoption);
+      }
+      else if(this.selectoption=="ENG"){
+        localStorage.setItem('language',this.selectoption);
+      }
       localStorage.setItem('balance',JSON.stringify(this.balance));
       localStorage.setItem("title",this.title);
       this.uyari("You are redirected...","warning")
@@ -42,6 +54,40 @@ export class StartPage implements OnInit {
     }
     
   }
+
+  sendtr(){
+    
+    if(this.title.length<1){
+      this.uyari("İsim girmelisiniz...","danger")
+    }
+    else if(!(this.balance) || this.balance<10000){
+      this.uyari("Minimum 10000 dolar para miktarı belirlemelisiniz...","danger")
+    }
+    else if(this.selectoption==undefined){
+      this.uyari("Dil seçmelisiniz...","danger")
+    }
+    
+    else{
+      if(this.selectoption=="TR"){
+        localStorage.setItem('language',this.selectoption);
+      }
+      else if(this.selectoption=="ENG"){
+        localStorage.setItem('language',this.selectoption);
+      }
+      localStorage.setItem('balance',JSON.stringify(this.balance));
+      localStorage.setItem("title",this.title);
+      this.uyari("Yönlendiriliyorsunuz...","warning")
+      setTimeout(() => {
+        this.navCtrl.navigateRoot('/folder');
+        this.uyari("Kripto Dünyasına Hoşgeldiniz...","success")
+      }, 2000);
+      
+
+    }
+    
+  }
+
+ 
 
 
   async uyari(mesaj,renk) {

@@ -9,6 +9,7 @@ import { AlertController, LoadingController, NavController, ToastController } fr
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
+  language=localStorage.getItem('language');
   public folder: string;
   public api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   public allcoininfo:any=[];
@@ -30,7 +31,6 @@ export class FolderPage implements OnInit {
 
     this.http.get(this.api_key).subscribe(data=>{
       this.allcoininfo=data;
-      console.log(this.allcoininfo);
     })
 
 
@@ -125,6 +125,39 @@ export class FolderPage implements OnInit {
      
       this.navCtrl.navigateRoot('/start');
       this.uyari("Exit Successful","success")
+    }, 3000);
+
+  }
+
+  async presentAlerttr() {
+    if(this.i==0){
+    const alert = await this.alertController.create({
+      header: 'Dikkatli ol',
+      message: 'Eğer çıkış yaparsan, hesabın silinecek. Kabul ediyor musun? Kabul ediyorsan, çıkış butonuna bir daha bas.',
+      buttons: ['Kabul ediyorum.']
+    });
+    await alert.present();
+    this.i=this.i+1;
+    }
+    else if(this.i==1){
+    localStorage.clear();
+    this.showLoadingtr();
+  }
+    
+  }
+
+  async showLoadingtr() {
+    const loading = await this.loadingCtrl.create({
+      message: '3 saniye içinde çıkılıyor...',
+      duration: 3000
+      
+    });
+    
+    loading.present();
+    setTimeout(() => {
+     
+      this.navCtrl.navigateRoot('/start');
+      this.uyari("Çıkış Başarılı","success")
     }, 3000);
 
   }

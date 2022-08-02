@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="language=='TR'">
+      <ion-back-button text="Geri"></ion-back-button>
+    </ion-buttons>    
+    <ion-buttons slot="start" *ngIf="language=='ENG'">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>  
+    <ion-title *ngIf="language=='ENG'">History</ion-title>
+    <ion-title *ngIf="language=='TR'">Geçmiş</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+   <!-- SATIN ALIM LİSTELEME -->
+   <ion-list *ngIf="language=='ENG'" style="margin-bottom: 15px;">
+    <h5 style="color: green; margin-left: 5%; "><u>PURCHASES</u></h5>
+      <ion-item *ngFor="let info of historybuy" >
+        <ion-avatar slot="start">
+          <img src="{{info.img}}" />
+        </ion-avatar>
+        
+        <ion-label>
+          <h2>{{info.id}}</h2>
+          <h3><span >Bought price: </span><strong >{{info.price}}$</strong> </h3>
+        </ion-label>
+        <ion-label>
+          <ion-label style="margin-left: 50%; font-size: 15px;"><u><strong>Count</strong></u></ion-label>
+          <span style="margin-left: 70px; font-size: 15px; color: green;"><strong>{{info.amount}}</strong></span>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+   <!-- SATIŞ LİSTELEME -->
+  <ion-list *ngIf="language=='ENG'">
+    <h5 style="color: red; margin-left: 5%; "><u>SOLD</u></h5>
+      <ion-item *ngFor="let info of historybuy" >
+        <ion-avatar slot="start">
+          <img src="{{info.img}}" />
+        </ion-avatar>
+        
+        <ion-label>
+          <h2>{{info.id}}</h2>
+          <h3><span >Sell price: </span><strong >{{info.price}}$</strong> </h3>
+        </ion-label>
+        <ion-label>
+          <ion-label style="margin-left: 50%; font-size: 15px;"><u><strong>Count</strong></u></ion-label>
+          <span style="margin-left: 70px; font-size: 15px; color: red;"><strong>{{info.amount}}</strong></span>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+   <!-- SATIN ALIM LİSTELEME -->
+  <ion-list *ngIf="language=='TR'" style="margin-bottom: 15px;">
+    <h5 style="color: green; margin-left: 5%; "><u>SATIN ALIMLAR</u></h5>
+
+      <ion-item *ngFor="let info of historybuy" >
+        <ion-avatar slot="start">
+          <img src="{{info.img}}" />
+        </ion-avatar>
+        
+        <ion-label>
+          <h2>{{info.id}}</h2>
+          <h3><span >Alınan Fiyat: </span><strong >{{info.price}}$</strong> </h3>
+        </ion-label>
+        <ion-label>
+          <ion-label style="margin-left: 50%; font-size: 15px;"><u><strong>Miktar</strong></u></ion-label>
+          <span style="margin-left: 70px; font-size: 15px; color: green;"><strong>{{info.amount}}</strong></span>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+  <!-- SATIŞ LİSTELEME -->
+  <ion-list *ngIf="language=='TR'">
+    <h5 style="color: red; margin-left: 5%; "><u>SATIŞLAR</u></h5>
+      <ion-item *ngFor="let info of historybuy" >
+        <ion-avatar slot="start">
+          <img src="{{info.img}}" />
+        </ion-avatar>
+        
+        <ion-label>
+          <h2>{{info.id}}</h2>
+          <h3><span >Satış fiyatı: </span><strong >{{info.price}}$</strong> </h3>
+        </ion-label>
+        <ion-label>
+          <ion-label style="margin-left: 50%; font-size: 15px;"><u><strong>Miktar</strong></u></ion-label>
+          <span style="margin-left: 70px; font-size: 15px; color: red;"><strong>{{info.amount}}</strong></span>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+</ion-content>

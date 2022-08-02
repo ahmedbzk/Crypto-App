@@ -9,6 +9,7 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
+  language=localStorage.getItem('language');
   id:string;
   api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   coinallinfo:any;
@@ -23,6 +24,7 @@ export class DetailsPage implements OnInit {
   icon:boolean=true;
   public i:number;
   public xarray=[];
+  historybuy=JSON.parse(localStorage.getItem("historybuy")) || [];
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private navCtrl: NavController) { }
 
   ngOnInit() {
@@ -35,9 +37,7 @@ export class DetailsPage implements OnInit {
    
   }
 
-  watchlist(){
-    
-  }
+  
 
   butonOne(){
     this.bol=this.balance/4;
@@ -94,12 +94,49 @@ export class DetailsPage implements OnInit {
         {
           id: this.justcoininfo.id,
           amount: this.count,
-          price: this.justcoininfo.current_price
+          price: this.justcoininfo.current_price,
+          img: this.justcoininfo.image
         },
       ]}
+      localStorage.setItem("historybuy",JSON.stringify(this.wallet))
       localStorage.setItem("wallet",JSON.stringify(this.wallet))
       console.log(this.wallet);
       this.uyari(`You bought ${this.count} count ${this.justcoininfo.name}`,'success')
+
+      }
+    }
+  }
+  buytr(){
+    if(!this.count){
+      this.uyari("Miktar girmelisiniz...",'danger')
+    }
+    else if(this.count<0){
+      this.uyari("Yanlış Miktar...",'danger')
+    }
+    
+    else{
+      if(this.balance<this.justcoininfo.current_price*this.count){
+        this.uyari("Satın alamazsınız. Çünkü bakiyeniz yeterli değil...",'danger')
+      }else{
+      this.balance=this.balance-(this.justcoininfo.current_price*this.count);
+      localStorage.setItem('balance',JSON.stringify(this.balance));
+      var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
+      if(checkWallet){
+        checkWallet.amount += this.count;
+      }else{
+      this.wallet=[
+        ...this.wallet,
+        {
+          id: this.justcoininfo.id,
+          amount: this.count,
+          price: this.justcoininfo.current_price,
+          img: this.justcoininfo.image
+        },
+      ]}
+      localStorage.setItem("historybuy",JSON.stringify(this.wallet))
+      localStorage.setItem("wallet",JSON.stringify(this.wallet))
+      console.log(this.wallet);
+      this.uyari(`${this.count} adet ${this.justcoininfo.name} satın aldınız...`,'success')
 
       }
     }
@@ -152,6 +189,48 @@ export class DetailsPage implements OnInit {
     });
     
     if(a==1){
+      this.uyari('The coin is on your watch list.','danger');
+      
+      
+    }else{
+      this.color="danger";
+      this.icon=false;
+      x.push(id);
+      console.log("wlist: ",x)
+      localStorage.setItem("wlist",JSON.stringify(x));
+      
+      this.uyari('Coin has been successfully added to your watchlist.','success');
+  
+  
+    }
+  
+  }
+  remove(id){
+    this.wlist.forEach((i,index)=>{
+      console.log(i.id+"i");
+      if(i.id==id.id) {
+        this.wlist.splice(index,1);
+        console.log(index+"index");
+        this.color="dark"
+        this.icon=true;
+        localStorage.setItem("wlist",JSON.stringify(this.wlist));
+      }});
+
+    this.uyari('Coin has been deleted from your Watchlist.','danger');
+
+  }
+
+  butonclicktr(id){
+    let x =JSON.parse(localStorage.getItem("wlist")) || [];
+    console.log(x)
+    let a =0;
+    x.forEach(function(element) {
+      if(element.id==id.id){
+        a++
+      }
+    });
+    
+    if(a==1){
       this.uyari('Coin watchlistinizde var.','danger');
       
       
@@ -168,10 +247,7 @@ export class DetailsPage implements OnInit {
     }
   
   }
-
-
-
-  remove(id){
+  removetr(id){
     this.wlist.forEach((i,index)=>{
       console.log(i.id+"i");
       if(i.id==id.id) {
@@ -185,11 +261,6 @@ export class DetailsPage implements OnInit {
     this.uyari('Coin Watchlistinizden silindi.','danger');
 
   }
-
-  
-
-
-
 
 
   async uyari(mesaj,renk) {

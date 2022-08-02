@@ -1,83 +1,166 @@
 
 
-<!-- WALLET -->
-<div  id="divcolor" >
-  <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
-    <ion-col style="margin-top: 8%;">
-      <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
-      <ion-icon name="refresh-circle-outline" (click)="refresh()"  style="font-size: 35px; color: white; float:right; margin-bottom: 2%;margin-right: 1%;" ></ion-icon><br>
-      <ion-label style="font-size: 80%; margin-left: 5%; margin-top: 15px; color: rgb(212, 212, 212);">Total Balance</ion-label>
-    </ion-col>
-  </ion-row>
+  <!-- WALLET -->
+  <div  id="divcolor"  *ngIf="language=='ENG'">
+    <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
+      <ion-col style="margin-top: 8%;">
+        <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
+        <ion-icon name="refresh-circle-outline" (click)="refresh()"  style="font-size: 35px; color: white; float:right; margin-bottom: 2%;margin-right: 1%;" ></ion-icon><br>
+        <ion-label style="font-size: 80%; margin-left: 5%; margin-top: 15px; color: rgb(212, 212, 212);">Total Balance</ion-label>
+      </ion-col>
+    </ion-row>
 
-  <!-- WALLET ALTI BUTONLAR -->
-  <ion-row style="margin-top: 7%;" >
-    <ion-col >
-      <div class="col-1">
-      <ion-icon name="bag-add-outline" style="color: white; font-size: 25px;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
-      </div>
-      <ion-label class="col-2">Buy</ion-label>
-    </ion-col>
-    <ion-col >
-      <div class="col-1">
-      <ion-icon name="bag-remove-outline" style="color: white; font-size: 25px; " [routerLink]="['/sell/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
-      </div>
-      <ion-label class="col-2">Sell</ion-label>
-    </ion-col>
-    <ion-col >
-      <div class="col-1">
-      <ion-icon name="cellular-outline" style="color: white; font-size: 25px; "></ion-icon><br>
-      </div>
-      <ion-label class="col-2">History</ion-label>
-    </ion-col>
-    <ion-col >
-      <!-- <div class="col-1">
-      <button style="background-color: transparent ;" id="btn" (click)="btncolor()">
-      <ion-icon name="contrast-outline" style="color: white; font-size: 25px; "></ion-icon><br>
-      </button>
-      </div>
-      <ion-label class="col-2">Color</ion-label> -->
-      <div class="col-1">
-        <button style="background-color: transparent ;" (click)="settings()">
-        <ion-icon name="settings-outline" style="color: white; font-size: 25px; "></ion-icon><br>
+    <!-- WALLET ALTI BUTONLAR -->
+    <ion-row style="margin-top: 7%;" >
+      <ion-col >
+        <div class="col-1">
+        <ion-icon name="bag-add-outline" style="color: white; font-size: 25px;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
+        </div>
+        <ion-label class="col-2">Buy</ion-label>
+      </ion-col>
+      <ion-col >
+        <div class="col-1">
+        <ion-icon name="bag-remove-outline" style="color: white; font-size: 25px; " [routerLink]="['/sell/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
+        </div>
+        <ion-label class="col-2">Sell</ion-label>
+      </ion-col>
+      <ion-col >
+        <div class="col-1">
+        <ion-icon name="cellular-outline" style="color: white; font-size: 25px; " [routerLink]="['/history']" routerLinkActive="router-link-active"></ion-icon><br>
+        </div>
+        <ion-label class="col-2">History</ion-label>
+      </ion-col>
+      <ion-col >
+        <!-- <div class="col-1">
+        <button style="background-color: transparent ;" id="btn" (click)="btncolor()">
+        <ion-icon name="contrast-outline" style="color: white; font-size: 25px; "></ion-icon><br>
         </button>
         </div>
-        <ion-label class="col-2">Settings</ion-label>
-    </ion-col>
-  </ion-row>
-</div>
-<ion-progress-bar color="dark" value="1"></ion-progress-bar>
-<!-- WALLET DOWN SİDE -->
- <ion-content style="background-color: white;">
-   <!-- PRİCE VE PROGRESS BAR -->
-    <div style="padding: 3px; border-radius: 150px;">
-      <ion-row>
-        <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;">Coins</ion-col>
-        <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 15%;">USD:<strong>${{balance.toFixed(2)}}</strong></ion-col>
-        <ion-progress-bar color="primary" value="1"></ion-progress-bar>
-      </ion-row>
+        <ion-label class="col-2">Color</ion-label> -->
+        <div class="col-1">
+          <button style="background-color: transparent ;" >
+          <ion-icon name="settings-outline" style="color: white; font-size: 25px; " [routerLink]="['/settings']" routerLinkActive="router-link-active" ></ion-icon><br>
+          </button>
+          </div>
+          <ion-label class="col-2">Settings</ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div  id="divcolor"  *ngIf="language=='TR'">
+    <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
+      <ion-col style="margin-top: 8%;">
+        <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
+        <ion-icon name="refresh-circle-outline" (click)="refresh()"  style="font-size: 35px; color: white; float:right; margin-bottom: 2%;margin-right: 1%;" ></ion-icon><br>
+        <ion-label style="font-size: 80%; margin-left: 5%; margin-top: 15px; color: rgb(212, 212, 212);">Toplam Bakiye</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <!-- WALLET ALTI BUTONLAR -->
+    <ion-row style="margin-top: 7%;" >
+      <ion-col >
+        <div class="col-1">
+        <ion-icon name="bag-add-outline" style="color: white; font-size: 25px;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
+        </div>
+        <ion-label class="col-2">Satın al</ion-label>
+      </ion-col>
+      <ion-col >
+        <div class="col-1">
+        <ion-icon name="bag-remove-outline" style="color: white; font-size: 25px; " [routerLink]="['/sell/bitcoin']" routerLinkActive="router-link-active" ></ion-icon><br>
+        </div>
+        <ion-label class="col-2">Sat</ion-label>
+      </ion-col>
+      <ion-col >
+        <div class="col-1">
+        <ion-icon name="cellular-outline" style="color: white; font-size: 25px; " [routerLink]="['/history']" routerLinkActive="router-link-active"></ion-icon><br>
+        </div>
+        <ion-label class="col-2">Geçmiş</ion-label>
+      </ion-col>
+      <ion-col >
+        <!-- <div class="col-1">
+        <button style="background-color: transparent ;" id="btn" (click)="btncolor()">
+        <ion-icon name="contrast-outline" style="color: white; font-size: 25px; "></ion-icon><br>
+        </button>
+        </div>
+        <ion-label class="col-2">Color</ion-label> -->
+        <div class="col-1">
+          <button style="background-color: transparent ;" >
+          <ion-icon name="settings-outline" style="color: white; font-size: 25px; " [routerLink]="['/settings']" routerLinkActive="router-link-active" ></ion-icon><br>
+          </button>
+          </div>
+          <ion-label class="col-2">Ayarlar</ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-progress-bar color="dark" value="1"></ion-progress-bar>
+
+  <!-- WALLET DOWN SİDE -->
+  <ion-content style="background-color: white;">
+
+    <div *ngIf="language=='ENG'">
+
+    <!-- PRİCE VE PROGRESS BAR -->
+      <div style="padding: 3px; border-radius: 150px;">
+        <ion-row>
+          <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;">Coins</ion-col>
+          <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%;">USD:<strong>${{balance.toFixed(2)}}</strong></ion-col>
+          <ion-progress-bar color="primary" value="1"></ion-progress-bar>
+        </ion-row>
+      </div>
+
+
+        <!--Wallet COİNLERİ LİSTELEME-->
+    <ion-list >
+      <ion-item *ngFor="let info of xarray" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+        <ion-avatar slot="start">
+          <img src="{{info.image}}" />
+        </ion-avatar>
+        
+        <ion-label >
+          <h2>{{info.name}}</h2>
+          <h3><span >Price: </span><strong >{{info.current_price.toFixed(3)}}$</strong> </h3>
+        </ion-label>
+        <ion-label style="text-align: right;" >
+          <h2>{{info.amount.toFixed(2)}} {{info.symbol.toUpperCase()}}</h2>
+          <h3><strong >{{info.amount*info.current_price.toFixed(2)}}$</strong> </h3>      </ion-label>
+      </ion-item>
+    </ion-list>
+  <!--  -->
     </div>
 
+    <div *ngIf="language=='TR'">
 
-      <!--Wallet COİNLERİ LİSTELEME-->
-  <ion-list >
-    <ion-item *ngFor="let info of xarray" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
-      <ion-avatar slot="start">
-        <img src="{{info.image}}" />
-      </ion-avatar>
-      
-      <ion-label >
-        <h2>{{info.name}}</h2>
-        <h3><span >Price: </span><strong >{{info.current_price.toFixed(3)}}$</strong> </h3>
-      </ion-label>
-      <ion-label style="text-align: right;" >
-        <h2>{{info.amount.toFixed(2)}} {{info.symbol.toUpperCase()}}</h2>
-        <h3><strong >{{info.amount*info.current_price.toFixed(2)}}$</strong> </h3>      </ion-label>
-    </ion-item>
-  </ion-list>
-<!--  -->
+      <!-- PRİCE VE PROGRESS BAR -->
+        <div style="padding: 3px; border-radius: 150px;">
+          <ion-row>
+            <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px;">Kriptolar</ion-col>
+            <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%;">Dolar:<strong>${{balance.toFixed(2)}}</strong></ion-col>
+            <ion-progress-bar color="primary" value="1"></ion-progress-bar>
+          </ion-row>
+        </div>
+  
+  
+          <!--Wallet COİNLERİ LİSTELEME-->
+      <ion-list >
+        <ion-item *ngFor="let info of xarray" [routerLink]="['/details',info.id]" routerLinkActive="router-link-active" >
+          <ion-avatar slot="start">
+            <img src="{{info.image}}" />
+          </ion-avatar>
+          
+          <ion-label >
+            <h2>{{info.name}}</h2>
+            <h3><span >Fiyat: </span><strong >{{info.current_price.toFixed(3)}}$</strong> </h3>
+          </ion-label>
+          <ion-label style="text-align: right;" >
+            <h2>{{info.amount.toFixed(2)}} {{info.symbol.toUpperCase()}}</h2>
+            <h3><strong >{{info.amount*info.current_price.toFixed(2)}}$</strong> </h3>      </ion-label>
+        </ion-item>
+      </ion-list>
+    <!--  -->
+      </div>
 
-</ion-content> 
+  </ion-content> 
 
 
 
@@ -85,7 +168,7 @@
 
 
 
-<ion-footer style="border-top: 1px solid grey;">
+<ion-footer style="border-top: 1px solid grey;" *ngIf="language=='ENG'">
   <div style="background-color: white;">
     <ion-row>
 
@@ -113,6 +196,39 @@
       <ion-col style="text-align: center" [routerLink]="['/perpetual']" routerLinkActive="router-link-active"  >
         <ion-icon name="bar-chart-outline" style="font-size: 27px; color: black;"></ion-icon><br>
         <ion-label style=" font-size: 10px; color: black;"><strong>Futures</strong></ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>
+
+<ion-footer style="border-top: 1px solid grey;" *ngIf="language=='TR'">
+  <div style="background-color: white;">
+    <ion-row>
+
+      <ion-col style="text-align: center;"  >
+        <ion-icon name="home-outline" style="font-size: 27px; color: black; " [routerLink]="['/folder']" routerLinkActive="router-link-active"></ion-icon><br>
+        <ion-label style="font-size: 10px; color: black;"><strong>Anasayfa</strong></ion-label>
+
+      </ion-col>
+      <ion-col style="text-align: center; " >
+        <ion-icon name="search-sharp" style="font-size: 27px; margin-right: 15px; color: black; " [routerLink]="['/search']" routerLinkActive="router-link-active" ></ion-icon><br>
+        <ion-label style="font-size: 10px; margin-right: 15px; color: black;"><strong>Arama</strong></ion-label>
+      </ion-col>
+
+        <ion-col>
+          <div style="background-color: black; border-radius: 60%; height: 100%; text-align: center;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" >
+            <ion-icon name="logo-bitcoin" style="color: white; font-size: 40px; margin-top: 3px;"></ion-icon><br>
+          </div>
+        </ion-col>
+
+      <ion-col style="text-align: center" >
+        <a  href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: blue;"></ion-icon></a><br>
+        <ion-label style=" font-size: 10px; margin-left: 15px; color: blue;"><strong>Cüzdan</strong></ion-label>
+      </ion-col>
+
+      <ion-col style="text-align: center" [routerLink]="['/perpetual']" routerLinkActive="router-link-active"  >
+        <ion-icon name="bar-chart-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px; color: black;"><strong>Kaldıraç</strong></ion-label>
       </ion-col>
     </ion-row>
   </div>

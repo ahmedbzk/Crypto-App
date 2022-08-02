@@ -9,6 +9,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./sell.page.scss'],
 })
 export class SellPage implements OnInit {
+  language=localStorage.getItem('language');
   id:string;
   api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   coinallinfo:any;
@@ -114,6 +115,39 @@ export class SellPage implements OnInit {
         this.wallet.splice(this.index,1)
     }
     localStorage.setItem("wallet",JSON.stringify(this.wallet))
+    localStorage.setItem("historysell",JSON.stringify(this.wallet))
+    }
+   
+    console.log(this.balance)
+    console.log(this.wallet);
+
+    }
+    }
+  }
+  selltr(){
+    if(!this.count){
+      this.uyari("Miktar girmelisiniz...",'danger')
+
+    }else{
+    var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
+    this.wallet.find((a,i) => {if(a.id === this.justcoininfo.id){this.index = i}})
+    if(!checkWallet){
+        this.uyari("Satamazsınız. Çünkü bu kripto paraya sahip değilsiniz...",'danger')
+    }else{
+      
+    
+    if(checkWallet.amount<this.count){
+        this.uyari("Satamazsınız. Çünkü bu kripto paraya sahip değilsiniz...",'danger')
+    }else{
+        this.balance=this.balance+(this.justcoininfo.current_price*this.count);
+        localStorage.setItem('balance',JSON.stringify(this.balance));
+        checkWallet.amount -= this.count;
+        this.uyari("Başarıyla sattınız...",'success')
+    if(checkWallet.amount==0){
+        this.wallet.splice(this.index,1)
+    }
+    localStorage.setItem("wallet",JSON.stringify(this.wallet))
+    localStorage.setItem("historysell",JSON.stringify(this.wallet))
     }
    
     console.log(this.balance)
@@ -180,10 +214,49 @@ export class SellPage implements OnInit {
     }
   
   }
-
- 
-
   remove(id){
+    this.wlist.forEach((i,index)=>{
+      console.log(i.id+"i");
+      if(i.id==id.id) {
+        this.wlist.splice(index,1);
+        console.log(index+"index");
+        this.color="dark"
+        this.icon=true;
+        localStorage.setItem("wlist",JSON.stringify(this.wlist));
+      }});
+
+    this.uyari('Coin Watchlistinizden silindi.','danger');
+
+  }
+
+  butonclicktr(id){
+    let x =JSON.parse(localStorage.getItem("wlist")) || [];
+    console.log(x)
+    let a =0;
+    x.forEach(function(element) {
+      if(element.id==id.id){
+        a++
+      }
+    });
+    
+    if(a==1){
+      this.uyari('Coin watchlistinizde var.','danger');
+      
+      
+    }else{
+      this.color="danger";
+      this.icon=false;
+      x.push(id);
+      console.log("wlist: ",x)
+      localStorage.setItem("wlist",JSON.stringify(x));
+      
+      this.uyari('Coin watchlistinize başarıyla eklendi.','success');
+  
+  
+    }
+  
+  }
+  removetr(id){
     this.wlist.forEach((i,index)=>{
       console.log(i.id+"i");
       if(i.id==id.id) {
