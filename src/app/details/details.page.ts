@@ -25,7 +25,7 @@ export class DetailsPage implements OnInit {
   icon:boolean=true;
   public i:number;
   public xarray=[];
-  historybuy=JSON.parse(localStorage.getItem("historybuy")) || [];
+  historybuypage=JSON.parse(localStorage.getItem("historybuy")) || [];
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private navCtrl: NavController,private router: Router) { }
 
   ngOnInit() {
@@ -121,6 +121,7 @@ export class DetailsPage implements OnInit {
       this.balance=this.balance-(this.justcoininfo.current_price*this.count);
       localStorage.setItem('balance',JSON.stringify(this.balance));
       var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
+      
       if(checkWallet){
         checkWallet.amount += this.count;
       }else{
@@ -132,7 +133,8 @@ export class DetailsPage implements OnInit {
           price: this.justcoininfo.current_price,
           img: this.justcoininfo.image
         },
-      ]}
+      ]
+    }
       localStorage.setItem("historybuy",JSON.stringify(this.wallet))
       localStorage.setItem("wallet",JSON.stringify(this.wallet))
       console.log(this.wallet);

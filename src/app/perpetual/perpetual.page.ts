@@ -9,7 +9,6 @@ import { NavController, ToastController } from '@ionic/angular';
 })
 export class PerpetualPage implements OnInit {
 
-  percent:number=1;
   balance:number=JSON.parse(localStorage.getItem('balance'));
   api_key:string="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
   itemallinfo:any=[];
@@ -24,6 +23,7 @@ export class PerpetualPage implements OnInit {
   newcount:number;
   n:any;
   perpetualwallet:any=[];
+  liqprice:number=0;
 
   constructor(private http: HttpClient, public toastController: ToastController,public navCtrl: NavController) { }
 
@@ -33,8 +33,6 @@ export class PerpetualPage implements OnInit {
       this.openlist=1;
       this.call=true;
     }
-    console.log(this.perpetualwallet)
-    
     
   }
 
@@ -48,6 +46,8 @@ export class PerpetualPage implements OnInit {
     if(this.count==0){
       this.uyari("You have to choose 'X' and enter the 'Balance'",'danger');
     }else{
+      console.log(this.info.current_price-(this.info.current_price/this.value))
+      this.liqprice=this.info.current_price-(this.info.current_price/this.value)
       this.newbalance=this.count*this.value;
       this.newcount=this.newbalance/this.info.current_price
       this.n=this.newcount.toFixed(2);
@@ -60,7 +60,8 @@ export class PerpetualPage implements OnInit {
           x: this.value,
           newbalance: this.newbalance,
           amount: this.n,
-          price: this.info.current_price
+          price: this.info.current_price,
+          liq:this.liqprice
         },
       ];
       localStorage.setItem("perpetualwallet",JSON.stringify(this.perpetualwallet))
@@ -70,7 +71,6 @@ export class PerpetualPage implements OnInit {
 
 
 
-    console.log(this.value) // 👉️ "Initial value"
    
     
     
@@ -96,12 +96,11 @@ export class PerpetualPage implements OnInit {
     this.openlist=2;
     this.itemallinfo=[];
     this.word="";
-    console.log(this.info)
+    
   }
 
   getSearch(){
     this.call=true;
-    console.log("a")
  
   }
 

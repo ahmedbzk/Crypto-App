@@ -25,6 +25,7 @@ export class SellPage implements OnInit {
   color:string="dark";
   icon:boolean=true;
   public i:number;
+  public historysellpage=JSON.parse(localStorage.getItem("historysell")) || [];
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private router:Router) { }
 
   ngOnInit() {
@@ -113,6 +114,8 @@ export class SellPage implements OnInit {
     }else{
         this.balance=this.balance+(this.justcoininfo.current_price*this.count);
         localStorage.setItem('balance',JSON.stringify(this.balance));
+        this.historysellpage.push(checkWallet);
+        localStorage.setItem("historysell",JSON.stringify(this.historysellpage))
         checkWallet.amount -= this.count;
         this.uyari("You sold.",'success')
     if(checkWallet.amount==0){
@@ -145,13 +148,16 @@ export class SellPage implements OnInit {
     }else{
         this.balance=this.balance+(this.justcoininfo.current_price*this.count);
         localStorage.setItem('balance',JSON.stringify(this.balance));
+        this.historysellpage.push(checkWallet);
+        localStorage.setItem("historysell",JSON.stringify(this.historysellpage))
         checkWallet.amount -= this.count;
         this.uyari("Başarıyla sattınız...",'success')
+
     if(checkWallet.amount==0){
         this.wallet.splice(this.index,1)
     }
     localStorage.setItem("wallet",JSON.stringify(this.wallet))
-    localStorage.setItem("historysell",JSON.stringify(this.wallet))
+
     }
    
     console.log(this.balance)

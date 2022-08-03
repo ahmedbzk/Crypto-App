@@ -119,8 +119,8 @@
       </ion-label>
       <ion-label>
         <span style="font-size: 15px; float: right;" ><strong >{{item.amount}} {{item.symbol}}</strong> </span><br>
-        <span style="font-size: 15px; float: right;"  [ngStyle]="{'color': (item.price<info.current_price) ? 'red' : 'green' }"><strong>%{{(info.price_change_percentage_24h*item.x)}}</strong> </span><br>
-        <span style="font-size: 15px; float: right;" >Liq Fiyatı:</span>
+        <span style="font-size: 15px; float: right;"  [ngStyle]="{'color': (item.price<info.current_price) ? 'red' : 'green' }"><strong>%{{(info.price_change_percentage_24h*item.x).toFixed(2)}}</strong> </span><br>
+        <span style="font-size: 15px; float: right;" >Likidasyon:<strong style=" color: brown;">{{item.liq.toFixed(2)}}</strong></span>
       </ion-label>
     </ion-item>
   </ion-list>

@@ -1,7 +1,7 @@
 
 
   <!-- WALLET -->
-  <div  id="divcolor"  *ngIf="language=='ENG'">
+  <div   style="background-color: rgb(19, 19, 158);" *ngIf="language=='ENG'">
     <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
       <ion-col style="margin-top: 8%;">
         <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
@@ -47,7 +47,7 @@
     </ion-row>
   </div>
 
-  <div  id="divcolor"  *ngIf="language=='TR'">
+  <div  style="background-color: rgb(19, 19, 158);"  *ngIf="language=='TR'">
     <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
       <ion-col style="margin-top: 8%;">
         <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
@@ -122,8 +122,8 @@
           <h3><span >Price: </span><strong >{{info.current_price.toFixed(3)}}$</strong> </h3>
         </ion-label>
         <ion-label style="text-align: right;" >
-          <h2>{{info.amount.toFixed(2)}} {{info.symbol.toUpperCase()}}</h2>
-          <h3><strong >{{info.amount*info.current_price.toFixed(2)}}$</strong> </h3>      </ion-label>
+          <h2><label style="color: brown;"><strong>{{info.amount.toFixed(2)}}</strong></label> {{info.symbol.toUpperCase()}}</h2>
+          <h3><strong>{{info.amount*info.current_price.toFixed(2)}}$</strong></h3></ion-label>
       </ion-item>
     </ion-list>
   <!--  -->
@@ -153,7 +153,7 @@
             <h3><span >Fiyat: </span><strong >{{info.current_price.toFixed(3)}}$</strong> </h3>
           </ion-label>
           <ion-label style="text-align: right;" >
-            <h2>{{info.amount.toFixed(2)}} {{info.symbol.toUpperCase()}}</h2>
+            <h2><label style="color: brown;"><strong>{{info.amount.toFixed(2)}}</strong></label> {{info.symbol.toUpperCase()}}</h2>
             <h3><strong >{{info.amount*info.current_price.toFixed(2)}}$</strong> </h3>      </ion-label>
         </ion-item>
       </ion-list>
@@ -161,11 +161,6 @@
       </div>
 
   </ion-content> 
-
-
-
-
-
 
 
 <ion-footer style="border-top: 1px solid grey;" *ngIf="language=='ENG'">

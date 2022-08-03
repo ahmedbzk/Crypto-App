@@ -8,6 +8,8 @@
     </ion-buttons>  
     <ion-title *ngIf="language=='ENG'">History</ion-title>
     <ion-title *ngIf="language=='TR'">Geçmiş</ion-title>
+    <ion-button *ngIf="language=='ENG'" slot="end" color="danger" style="width: 15%; height: auto; " [routerLink]="['/wallet']" routerLinkActive="router-link-active"     (click)="deleteeng()"><span style="color: white; padding: 5px;"><strong>Clear</strong></span></ion-button>
+    <ion-button *ngIf="language=='TR'" slot="end" color="danger" style="width: 20%; height: auto; " [routerLink]="['/wallet']" routerLinkActive="router-link-active"  (click)="deletetr()"><span style="color: white; padding: 5px;"><strong>Temizle</strong></span></ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +37,7 @@
    <!-- SATIŞ LİSTELEME -->
   <ion-list *ngIf="language=='ENG'">
     <h5 style="color: red; margin-left: 5%; "><u>SOLD</u></h5>
-      <ion-item *ngFor="let info of historybuy" >
+      <ion-item *ngFor="let info of historysell" >
         <ion-avatar slot="start">
           <img src="{{info.img}}" />
         </ion-avatar>
@@ -74,7 +76,7 @@
   <!-- SATIŞ LİSTELEME -->
   <ion-list *ngIf="language=='TR'">
     <h5 style="color: red; margin-left: 5%; "><u>SATIŞLAR</u></h5>
-      <ion-item *ngFor="let info of historybuy" >
+      <ion-item *ngFor="let info of historysell" >
         <ion-avatar slot="start">
           <img src="{{info.img}}" />
         </ion-avatar>

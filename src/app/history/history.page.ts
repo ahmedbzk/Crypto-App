@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-history',
@@ -10,9 +12,37 @@ export class HistoryPage implements OnInit {
   public historysell:any=JSON.parse(localStorage.getItem("historysell")) || [];
   language=localStorage.getItem('language');
 
-  constructor() { }
+  constructor(public toastController: ToastController,private router: Router) { }
 
   ngOnInit() {
   }
 
+  deletetr(){
+    localStorage.removeItem('historybuy')
+    localStorage.removeItem('historysell')
+    this.uyari("Cleanup successful","success")
+  }
+  deleteeng(){
+    localStorage.removeItem('historybuy')
+    localStorage.removeItem('historysell')
+    this.uyari("Temizleme başarılı","success")
+  }
+
+
+
+
+
+
+
+
+
+
+  async uyari(mesaj,renk) {
+    const toast = await this.toastController.create({
+      message: mesaj,
+      color:renk,
+      duration: 1000,
+    });
+    toast.present();
+  }
 }

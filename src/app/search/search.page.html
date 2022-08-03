@@ -11,7 +11,7 @@
   
   <!-- SEARCHBAR LİSTELEME -->
   <div *ngIf="language=='ENG'">
-    <ion-searchbar placeholder="Search Coin or Token..." color="dark" 
+    <ion-searchbar placeholder="Search Coin or Token..." color="light" 
     [(ngModel)]="word" (ngModelChange)="found()">
     </ion-searchbar>
     
@@ -42,8 +42,8 @@
         <ion-row style="background-color: white;">
           <ion-col  style="margin-left: 5%; color: black;"><strong ><u>Crypto's</u></strong></ion-col>
           <ion-col (click)="changepageagain()" style="margin-left: 10%; color: gray;" >Watchlist</ion-col>
-          <ion-col style="margin-left: 10%;">
-            <button style="background-color: white;" (click)="coinsup()">
+          <ion-col style="display: flex; justify-content: center;">
+            <button style="background-color: white; " (click)="coinsup()">
             <ion-icon name="arrow-up-circle-outline" style="font-size: 20px; color: green;"></ion-icon>
             <ion-icon name="arrow-down-circle-outline" style="font-size: 20px; color: red;"></ion-icon>
             </button> 
@@ -92,7 +92,7 @@
         <ion-row style="background-color: white;">
           <ion-col (click)="changepage()" style="margin-left: 5%; color: gray;">Crypto's</ion-col>
           <ion-col style="margin-left: 5%; color: black;"><strong ><u>Watchlist</u></strong></ion-col>
-          <ion-col style="margin-left: 10%;">
+          <ion-col style="display: flex; justify-content: center;">
             <button style="background-color: white;" (click)="coinsupwatchlist()">
             <ion-icon name="arrow-up-circle-outline" style="font-size: 20px; color: green;"></ion-icon>
             <ion-icon name="arrow-down-circle-outline" style="font-size: 20px; color: red;"></ion-icon>
@@ -128,7 +128,7 @@
   </div>
 
   <div *ngIf="language=='TR'">
-    <ion-searchbar placeholder="Coin veya Token Ara..." color="dark" 
+    <ion-searchbar placeholder="Coin veya Token Ara..." color="light" 
     [(ngModel)]="word" (ngModelChange)="found()">
     </ion-searchbar>
     
@@ -159,7 +159,7 @@
         <ion-row style="background-color: white;">
           <ion-col style="margin-left: 5%; color: black;"><strong ><u>Kriptolar</u></strong></ion-col>
           <ion-col (click)="changepageagain()" style="margin-left: 10%; color: gray;">Takiptekiler</ion-col>
-          <ion-col style="margin-left: 10%;">
+          <ion-col style="display: flex; justify-content: center;">
             <button style="background-color: white;" (click)="coinsup()">
             <ion-icon name="arrow-up-circle-outline" style="font-size: 20px; color: green;"></ion-icon>
             <ion-icon name="arrow-down-circle-outline" style="font-size: 20px; color: red;"></ion-icon>
@@ -206,10 +206,10 @@
 
       <div>
           
-        <ion-row>
+        <ion-row style="background-color: white;">
           <ion-col (click)="changepage()" style="margin-left: 5%; color: gray;">Kriptolar</ion-col>
           <ion-col style="margin-left: 5%; color: black;"><strong ><u>Takiptekiler</u></strong></ion-col>
-          <ion-col style="margin-left: 10%;">
+          <ion-col style="display: flex; justify-content: center;">
             <button style="background-color: white;" (click)="coinsupwatchlist()">
             <ion-icon name="arrow-up-circle-outline" style="font-size: 20px; color: green;"></ion-icon>
             <ion-icon name="arrow-down-circle-outline" style="font-size: 20px; color: red;"></ion-icon>
