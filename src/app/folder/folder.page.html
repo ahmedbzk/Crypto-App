@@ -104,10 +104,10 @@
     </div>
 
   <!-- COİN BAŞLIKLARI -->
-    <div style="margin-top: 15px; background-color: black">
+    <div style="margin-top: 15px; background-color: white">
       
       <ion-row>
-        <ion-col style="margin-left: 5%; color: white;"><u>Cryptocurrencies</u></ion-col>
+        <ion-col style="margin-left: 5%; color: black; "><u>Cryptocurrencies</u></ion-col>
         <ion-col >
           
         </ion-col>
@@ -127,9 +127,11 @@
           <h2>{{info.name}}</h2>
           <h3><span >Price: </span><strong >{{info.current_price}}$</strong> </h3>
         </ion-label>
-        <ion-label>
-          <span style="margin-left: 70px; font-size: 15px;"  [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }"><strong>%{{info.price_change_percentage_24h.toFixed(2)}}</strong> </span>
-        </ion-label>
+        <div style="width: 25%; height: 60%; padding: 3px; border-radius: 5px; display: flex; justify-content: center; align-items: center;" [ngStyle]="{'background-color': info.price_change_percentage_24h<0 ? 'red' : 'green' }">
+          <ion-label>
+            <span style="font-size: 14px; color: white; text-align: center; "><strong>{{info.price_change_percentage_24h.toFixed(2)}}%</strong></span>
+          </ion-label>
+        </div>
       </ion-item>
     </ion-list>
 
@@ -228,10 +230,10 @@
     </div>
 
   <!-- COİN BAŞLIKLARI -->
-    <div style="margin-top: 15px; background-color: black">
+    <div style="margin-top: 15px; background-color: white">
       
       <ion-row>
-        <ion-col style="margin-left: 5%; color: white;"><u>Kripto Paralar</u></ion-col>
+        <ion-col style="margin-left: 5%; color: black;"><u>Kripto Paralar</u></ion-col>
         <ion-col >
           
         </ion-col>
@@ -251,9 +253,11 @@
           <h2>{{info.name}}</h2>
           <h3><span >Fiyat: </span><strong >{{info.current_price}}$</strong> </h3>
         </ion-label>
-        <ion-label>
-          <span style="margin-left: 70px; font-size: 15px;"  [ngStyle]="{'color': info.price_change_percentage_24h<0 ? 'red' : 'green' }"><strong>%{{info.price_change_percentage_24h.toFixed(2)}}</strong> </span>
-        </ion-label>
+        <div style="width: 25%; height: 60%; padding: 3px; border-radius: 5px; display: flex; justify-content: center; align-items: center;" [ngStyle]="{'background-color': info.price_change_percentage_24h<0 ? 'red' : 'green' }">
+          <ion-label>
+            <span style="font-size: 14px; color: white; text-align: center; "><strong>{{info.price_change_percentage_24h.toFixed(2)}}%</strong></span>
+          </ion-label>
+        </div>
       </ion-item>
     </ion-list>
 
@@ -283,7 +287,7 @@
         </ion-col>
 
       <ion-col style="text-align: center"  >
-        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <a (click)="wallet()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Wallet</strong></ion-label>
       </ion-col>
 
@@ -316,7 +320,7 @@
         </ion-col>
 
       <ion-col style="text-align: center"  >
-        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <a (click)="wallet()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Cüzdan</strong></ion-label>
       </ion-col>
 

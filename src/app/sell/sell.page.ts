@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -25,7 +25,7 @@ export class SellPage implements OnInit {
   color:string="dark";
   icon:boolean=true;
   public i:number;
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private router:Router) { }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -35,7 +35,11 @@ export class SellPage implements OnInit {
     
   }
 
-  
+  buy(){
+    this.router.navigate(['details',this.justcoininfo&&this.justcoininfo.id])
+      .then(() => {
+    });
+  }
 
   butonOne(){
     var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
@@ -157,6 +161,11 @@ export class SellPage implements OnInit {
     }
   }
 
+  walleta(){
+    this.router.navigate(['wallet'])
+      .then(() => {
+    });
+  }
 
   getData(){
     this.http.get(this.api_key).subscribe(data=>{

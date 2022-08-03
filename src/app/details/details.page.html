@@ -98,7 +98,7 @@
           <ion-input type="number" placeholder="Count" [(ngModel)]="count" ></ion-input>
         </ion-item>
         <div style="margin-top: 3px;">
-        <ion-label style="margin-bottom: 5px;  color: gray; font-size: 17px;">Balance: {{balance.toFixed(2)}}$</ion-label><br>
+        <ion-label style="margin-bottom: 5px;  color: gray; font-size: 17px;">Balance: {{newbalance.toFixed(2)}}$</ion-label><br>
         <ion-label style="  color: red;">${{bol}}</ion-label>
         </div>
       </ion-col>
@@ -284,7 +284,7 @@
         </ion-col>
 
       <ion-col style="text-align: center">
-        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <a (click)="walleta()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Wallet</strong></ion-label>
       </ion-col>
 
@@ -317,7 +317,7 @@
         </ion-col>
 
       <ion-col style="text-align: center">
-        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <a (click)="walleta()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Cüzdan</strong></ion-label>
       </ion-col>
 

@@ -35,7 +35,7 @@
       <ion-col style="text-align: center; ">
         <!-- SELECT KISMI -->
         <ion-segment style="height: 30%;">
-          <ion-segment-button [routerLink]="['/details',justcoininfo && justcoininfo.id]" routerLinkActive="router-link-active" >
+          <ion-segment-button (click)="buy()" routerLinkActive="router-link-active" >
             <ion-label style="font-size: 15px;">BUY</ion-label>
           </ion-segment-button>
           <ion-segment-button style="background-color: red; color: white;" >
@@ -277,7 +277,7 @@
         </ion-col>
 
       <ion-col style="text-align: center">
-        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <a (click)="walleta()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Wallet</strong></ion-label>
       </ion-col>
 
@@ -310,7 +310,7 @@
         </ion-col>
 
       <ion-col style="text-align: center">
-        <a href="/wallet"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <a (click)="walleta()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Cüzdan</strong></ion-label>
       </ion-col>
 

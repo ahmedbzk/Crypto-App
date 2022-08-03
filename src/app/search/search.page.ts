@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
 
@@ -23,7 +23,7 @@ export class SearchPage implements OnInit {
   public wlist=JSON.parse(localStorage.getItem("wlist")) || [];
   public watchlistnew:any=[];
 
-  constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
+  constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController,private router:Router) { }
 
   ngOnInit() {
 
@@ -46,6 +46,12 @@ export class SearchPage implements OnInit {
    
       
 
+  }
+
+  walleta(){
+    this.router.navigate(['wallet'])
+      .then(() => {
+    });
   }
 
   coinsup(){

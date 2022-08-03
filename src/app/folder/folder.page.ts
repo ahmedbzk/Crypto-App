@@ -1,5 +1,5 @@
-import { Component, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit,  } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 
@@ -24,7 +24,7 @@ export class FolderPage implements OnInit {
   handlerMessage:string = '';
   public exit="CONTINUE";
   i:number=0;
-  constructor(private loadingCtrl: LoadingController,private navCtrl: NavController,private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController,private alertController: AlertController) { }
+  constructor(private router: Router,private loadingCtrl: LoadingController,private navCtrl: NavController,private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController,private alertController: AlertController) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -84,6 +84,12 @@ export class FolderPage implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 1000);
+  }
+
+  wallet(){
+    this.router.navigate(['wallet'])
+      .then(() => {
+    });
   }
 
 

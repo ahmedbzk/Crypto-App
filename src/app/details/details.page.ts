@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -16,6 +16,7 @@ export class DetailsPage implements OnInit {
   justcoininfo:any;
   index:number;
   balance:number=JSON.parse(localStorage.getItem('balance'))||0;
+  public newbalance:number=0;
   count:number;
   bol:number;
   public wallet:any=JSON.parse(localStorage.getItem("wallet")) || [];
@@ -25,13 +26,12 @@ export class DetailsPage implements OnInit {
   public i:number;
   public xarray=[];
   historybuy=JSON.parse(localStorage.getItem("historybuy")) || [];
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private navCtrl: NavController) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, public toastController: ToastController,private navCtrl: NavController,private router: Router) { }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getData();
     localStorage.setItem('balance',JSON.stringify(this.balance));
-    
     
     
    
@@ -143,9 +143,9 @@ export class DetailsPage implements OnInit {
   }
 
   sell(){
-    this.navCtrl.navigateRoot(['sell',this.justcoininfo&&this.justcoininfo.id]).then(() => {
-    window.location.reload();
-  });
+    this.router.navigate(['sell',this.justcoininfo&&this.justcoininfo.id])
+      .then(() => {
+    });
   }
 
   getData(){
@@ -153,7 +153,11 @@ export class DetailsPage implements OnInit {
       this.coinallinfo=data;
       this.justcoininfo =this.coinallinfo.filter(x => x.id == this.id)
       this.justcoininfo=this.justcoininfo[0];
-      console.log(this.justcoininfo)
+
+      var balancarefresh=this.balance;
+      if(balancarefresh){
+        this.newbalance=balancarefresh;
+      }
       
         //KIRMIZI YILDIZ
         let a=0;
@@ -176,7 +180,11 @@ export class DetailsPage implements OnInit {
     })
   }
 
-
+  walleta(){
+    this.router.navigate(['wallet'])
+      .then(() => {
+    });
+  }
 
   butonclick(id){
     let x =JSON.parse(localStorage.getItem("wlist")) || [];
