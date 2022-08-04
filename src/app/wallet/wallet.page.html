@@ -3,10 +3,31 @@
   <!-- WALLET -->
   <div  id="myBtn"  *ngIf="language=='EN'">
     <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
-      <ion-col style="margin-top: 8%;">
+      <ion-col style="display: flex;
+      margin-top: 8%;
+      flex-direction: row;
+      align-items: center;
+      justify-content:space-between
+      ">
         <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
-        <ion-icon name="refresh-circle-outline" (click)="refresh()"  style="font-size: 35px; color: white; float:right; margin-bottom: 2%;margin-right: 1%;" ></ion-icon><br>
-        <ion-label style="font-size: 80%; margin-left: 5%; margin-top: 15px; color: rgb(212, 212, 212);">Total Balance</ion-label>
+        <div *ngIf="oldbalance>(totalValue+balance)" class="divcan" [ngStyle]="{'background-color': oldbalance>(totalValue+balance) ? 'red' : 'green' }">
+        <ion-label style="color: white;" ><strong>Total  <u>{{newbalance.toFixed(2)}}$</u> Loss</strong></ion-label>
+        </div>
+        <div *ngIf="oldbalance==(totalValue+balance)" class="divcan"  style="width: 150px;">
+        <ion-label style="font-size: 12px; color: black; background-color: white; border-radius: 3px; padding: 5px;"><strong>You Currently Have no Loss or Profit.</strong></ion-label>
+        </div>
+        <div *ngIf="oldbalance<(totalValue+balance)" class="divcan" [ngStyle]="{'background-color': (!oldbalance>(totalValue+balance)) ? 'red' : 'green' }">
+
+        <ion-label style="color: white;" ><strong>Total  <u>{{newbalance.toFixed(2)}}$</u> Profit</strong></ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: start;">
+        <ion-label style="font-size: 80%; color: rgb(212, 212, 212); margin-left: 10%;">Total Balance</ion-label><br>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="refresh-circle-outline" (click)="refresh()"  style="font-size: 40px; color: white; float:right; margin-bottom: 2%;margin-right: 1%;" ></ion-icon>
       </ion-col>
     </ion-row>
 
@@ -47,12 +68,33 @@
     </ion-row>
   </div>
 
-  <div  style="background-color: rgb(19, 19, 158);"  *ngIf="language=='TR'">
+  <div   id="myBtn"  *ngIf="language=='TR'">
     <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
-      <ion-col style="margin-top: 8%;">
+      <ion-col style="display: flex;
+      margin-top: 8%;
+      flex-direction: row;
+      align-items: center;
+      justify-content:space-between
+      ">
         <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
-        <ion-icon name="refresh-circle-outline" (click)="refresh()"  style="font-size: 35px; color: white; float:right; margin-bottom: 2%;margin-right: 1%;" ></ion-icon><br>
-        <ion-label style="font-size: 80%; margin-left: 5%; margin-top: 15px; color: rgb(212, 212, 212);">Toplam Bakiye</ion-label>
+        <div *ngIf="oldbalance>(totalValue+balance)" class="divcan" [ngStyle]="{'background-color': oldbalance>(totalValue+balance) ? 'red' : 'green' }">
+        <ion-label style="color: white;" ><strong>Toplam  <u>{{newbalance.toFixed(2)}}$</u> Zarar</strong></ion-label>
+        </div>
+        <div *ngIf="oldbalance==(totalValue+balance)" class="divcan"  style="width: 150px;">
+        <ion-label style="font-size: 12px; color: black; background-color: white; border-radius: 3px; padding: 5px;"><strong>Şuanlık Zararınız veya Kârınız yok.</strong></ion-label>
+        </div>
+        <div *ngIf="oldbalance<(totalValue+balance)" class="divcan" [ngStyle]="{'background-color': (oldbalance!>(totalValue+balance)) ? 'red' : 'green' }">
+
+        <ion-label style="color: white;" ><strong>Toplam  <u>{{newbalance.toFixed(2)}}$</u> Kâr</strong></ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: start;">
+        <ion-label style="font-size: 80%; color: rgb(212, 212, 212); margin-left: 10%;">Toplam Bakiye</ion-label><br>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="refresh-circle-outline" (click)="refresh()"  style="font-size: 40px; color: white; float:right; margin-bottom: 2%;margin-right: 1%;" ></ion-icon>
       </ion-col>
     </ion-row>
 
@@ -85,10 +127,10 @@
         <ion-label class="col-2">Color</ion-label> -->
         <div class="col-1">
           <button style="background-color: transparent ;" >
-          <ion-icon name="settings-outline" style="color: white; font-size: 25px; " [routerLink]="['/settings']" routerLinkActive="router-link-active" ></ion-icon><br>
+          <ion-icon name="color-fill-outline" style="color: white; font-size: 25px; " (click)="btncolor()" ></ion-icon><br>
           </button>
           </div>
-          <ion-label class="col-2">Ayarlar</ion-label>
+          <ion-label class="col-2">Renk</ion-label>
       </ion-col>
     </ion-row>
   </div>
@@ -103,8 +145,8 @@
     <!-- PRİCE VE PROGRESS BAR -->
       <div style="padding: 3px; background-color: white;">
         <ion-row>
-          <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px; color: black;">Coins</ion-col>
-          <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%; color: black;">USD:<strong>${{balance.toFixed(2)}}</strong></ion-col>
+          <ion-col style="text-align: left; font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px; color: black;">Coins</ion-col>
+          <ion-col style="text-align: right; font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%; color: black;">Balance:<strong>${{balance.toFixed(2)}}</strong></ion-col>
           <ion-progress-bar color="primary" value="1"></ion-progress-bar>
         </ion-row>
       </div>
@@ -134,8 +176,8 @@
       <!-- PRİCE VE PROGRESS BAR -->
         <div style="padding: 3px;  background-color: white;">
           <ion-row>
-            <ion-col style="text-align: left; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px; color: black;">Kriptolar</ion-col>
-            <ion-col style="text-align: right; font-size: 17px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%; color: black;">Dolar:<strong>${{balance.toFixed(2)}}</strong></ion-col>
+            <ion-col  style="text-align: left; font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-left: 10px; color: black;">Kriptolar</ion-col>
+            <ion-col style="text-align: right; font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-right: 3%; color: black;">Bakiyeniz:<strong>${{balance.toFixed(2)}}</strong></ion-col>
             <ion-progress-bar color="primary" value="1"></ion-progress-bar>
           </ion-row>
         </div>

@@ -16,39 +16,42 @@ export class WalletPage implements OnInit {
   public divcolor:any;
   i:number=0;
   balance:number=JSON.parse(localStorage.getItem('balance'));
+  oldbalance:number=JSON.parse(localStorage.getItem('newbalance'));
   wallet=JSON.parse(localStorage.getItem('wallet'));
   xarray = [];
   totalValue:any = 0;
+  newbalance:number=0;
   constructor(private activatedRoute: ActivatedRoute,private http: HttpClient, public toastController: ToastController) { }
 
   ngOnInit() {
-    
+  
+    if(this.oldbalance>(this.totalValue+this.balance)){
+      this.newbalance=this.oldbalance-(this.totalValue+this.balance);
+    }
+    else if(this.oldbalance==(this.totalValue+this.balance)){
+      this.newbalance=0;
+    }
+    else if(this.oldbalance<(this.totalValue+this.balance)){
+      this.newbalance=(this.totalValue+this.balance)-this.oldbalance;
+    }
     
     this.http.get(this.api_key).subscribe(data=>{
       this.allcoininfo=data;
-      console.log(this.allcoininfo);
       this.update()
-      console.log(this.wallet);
-      console.log(this.xarray);
-
-
       this.xarray.forEach((element) => {
         this.totalValue+= element.amount*element.current_price;
-        console.log(element.amount);
-        console.log(element.current_price);
-        
+        if(this.oldbalance>(this.totalValue+this.balance)){
+          this.newbalance=this.oldbalance-(this.totalValue+this.balance);
+        }
+        else if(this.oldbalance==(this.totalValue+this.balance)){
+          this.newbalance=0;
+        }
+        else if(this.oldbalance<(this.totalValue+this.balance)){
+          this.newbalance=(this.totalValue+this.balance)-this.oldbalance;
+        }
         });
-      console.log(this.totalValue);
-      
     });
-   
-    
-    
-    
-
-    
     this.changeColor('darkblue');
-
   }
 
 

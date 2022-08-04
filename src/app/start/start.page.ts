@@ -14,6 +14,7 @@ export class StartPage implements OnInit {
   langone:string="EN";
   langtwo:string="TR";
   check:boolean=true;
+  newbalance:number;
 
   constructor(public toastController: ToastController,private navCtrl: NavController) { 
     
@@ -44,6 +45,9 @@ export class StartPage implements OnInit {
       }
       localStorage.setItem('balance',JSON.stringify(this.balance));
       localStorage.setItem("title",this.title);
+      localStorage.setItem('newbalance',JSON.stringify(this.balance));
+      console.log(this.balance)
+
       this.uyari("You are redirected...","warning")
       setTimeout(() => {
         this.navCtrl.navigateRoot('/folder');
@@ -76,6 +80,7 @@ export class StartPage implements OnInit {
       }
       localStorage.setItem('balance',JSON.stringify(this.balance));
       localStorage.setItem("title",this.title);
+      localStorage.setItem('newbalance',JSON.stringify(this.balance));
       this.uyari("Yönlendiriliyorsunuz...","warning")
       setTimeout(() => {
         this.navCtrl.navigateRoot('/folder');
