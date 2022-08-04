@@ -1,7 +1,7 @@
 
 
   <!-- WALLET -->
-  <div   style="background-color: rgb(19, 19, 158);" *ngIf="language=='ENG'">
+  <div  id="myBtn"  *ngIf="language=='EN'">
     <ion-row style="text-align: center; justify-content: center; align-items: center; display: flex; " >
       <ion-col style="margin-top: 8%;">
         <ion-label style="font-size: 190%; color: white;  margin-left: 5%;">${{(totalValue+balance).toFixed(2)}}</ion-label>
@@ -39,10 +39,10 @@
         <ion-label class="col-2">Color</ion-label> -->
         <div class="col-1">
           <button style="background-color: transparent ;" >
-          <ion-icon name="settings-outline" style="color: white; font-size: 25px; " [routerLink]="['/settings']" routerLinkActive="router-link-active" ></ion-icon><br>
+          <ion-icon name="color-fill-outline" style="color: white; font-size: 25px; " (click)="btncolor()" ></ion-icon><br>
           </button>
           </div>
-          <ion-label class="col-2">Settings</ion-label>
+          <ion-label class="col-2">Color</ion-label>
       </ion-col>
     </ion-row>
   </div>
@@ -98,7 +98,7 @@
   <!-- WALLET DOWN SİDE -->
   <ion-content style="background-color: white;">
 
-    <div *ngIf="language=='ENG'">
+    <div *ngIf="language=='EN'">
 
     <!-- PRİCE VE PROGRESS BAR -->
       <div style="padding: 3px; background-color: white;">
@@ -163,7 +163,7 @@
   </ion-content> 
 
 
-<ion-footer style="border-top: 1px solid grey;" *ngIf="language=='ENG'">
+<ion-footer style="border-top: 1px solid grey;" *ngIf="language=='EN'">
   <div style="background-color: white;">
     <ion-row>
 
@@ -188,9 +188,9 @@
         <ion-label style=" font-size: 10px; margin-left: 15px; color: blue;"><strong>Wallet</strong></ion-label>
       </ion-col>
 
-      <ion-col style="text-align: center" [routerLink]="['/perpetual']" routerLinkActive="router-link-active"  >
-        <ion-icon name="bar-chart-outline" style="font-size: 27px; color: black;"></ion-icon><br>
-        <ion-label style=" font-size: 10px; color: black;"><strong>Futures</strong></ion-label>
+      <ion-col style="text-align: center" [routerLink]="['/settings']" routerLinkActive="router-link-active"  >
+        <ion-icon name="settings-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px; color: black;"><strong>Settings</strong></ion-label>
       </ion-col>
     </ion-row>
   </div>
@@ -221,9 +221,9 @@
         <ion-label style=" font-size: 10px; margin-left: 15px; color: blue;"><strong>Cüzdan</strong></ion-label>
       </ion-col>
 
-      <ion-col style="text-align: center" [routerLink]="['/perpetual']" routerLinkActive="router-link-active"  >
-        <ion-icon name="bar-chart-outline" style="font-size: 27px; color: black;"></ion-icon><br>
-        <ion-label style=" font-size: 10px; color: black;"><strong>Kaldıraç</strong></ion-label>
+      <ion-col style="text-align: center" [routerLink]="['/settings']" routerLinkActive="router-link-active"  >
+        <ion-icon name="settings-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px; color: black;"><strong>Ayarlar</strong></ion-label>
       </ion-col>
     </ion-row>
   </div>

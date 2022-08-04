@@ -10,7 +10,7 @@
   </ion-refresher>
   
   <!-- SEARCHBAR LİSTELEME -->
-  <div *ngIf="language=='ENG'">
+  <div *ngIf="language=='EN'">
     <ion-searchbar placeholder="Search Coin or Token..." color="light" 
     [(ngModel)]="word" (ngModelChange)="found()">
     </ion-searchbar>
@@ -249,7 +249,7 @@
 </ion-content>
 
 
-<ion-footer style="border-top: 1px solid grey;" *ngIf="language=='ENG'">
+<ion-footer style="border-top: 1px solid grey;" *ngIf="language=='EN'">
   <div style="background-color: white;">
     <ion-row>
 
@@ -274,9 +274,9 @@
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Wallet</strong></ion-label>
       </ion-col>
 
-      <ion-col style="text-align: center" [routerLink]="['/perpetual']" routerLinkActive="router-link-active"  >
-        <ion-icon name="bar-chart-outline" style="font-size: 27px; color: black;"></ion-icon><br>
-        <ion-label style=" font-size: 10px; color: black;"><strong>Futures</strong></ion-label>
+      <ion-col style="text-align: center" [routerLink]="['/settings']" routerLinkActive="router-link-active"  >
+        <ion-icon name="settings-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px; color: black;"><strong>Settings</strong></ion-label>
       </ion-col>
     </ion-row>
   </div>
@@ -306,9 +306,9 @@
         <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Cüzdan</strong></ion-label>
       </ion-col>
 
-      <ion-col style="text-align: center" [routerLink]="['/perpetual']" routerLinkActive="router-link-active"  >
-        <ion-icon name="bar-chart-outline" style="font-size: 27px; color: black;"></ion-icon><br>
-        <ion-label style=" font-size: 10px; color: black;"><strong>Kaldıraç</strong></ion-label>
+      <ion-col style="text-align: center" [routerLink]="['/settings']" routerLinkActive="router-link-active"  >
+        <ion-icon name="settings-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px; color: black;"><strong>Ayarlar</strong></ion-label>
       </ion-col>
     </ion-row>
   </div>

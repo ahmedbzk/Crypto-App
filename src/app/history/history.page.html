@@ -3,12 +3,12 @@
     <ion-buttons slot="start" *ngIf="language=='TR'">
       <ion-back-button text="Geri"></ion-back-button>
     </ion-buttons>    
-    <ion-buttons slot="start" *ngIf="language=='ENG'">
+    <ion-buttons slot="start" *ngIf="language=='EN'">
       <ion-back-button ></ion-back-button>
     </ion-buttons>  
-    <ion-title *ngIf="language=='ENG'">History</ion-title>
+    <ion-title *ngIf="language=='EN'">History</ion-title>
     <ion-title *ngIf="language=='TR'">Geçmiş</ion-title>
-    <ion-button *ngIf="language=='ENG'" slot="end" color="danger" style="width: 15%; height: auto; " [routerLink]="['/wallet']" routerLinkActive="router-link-active"     (click)="deleteeng()"><span style="color: white; padding: 5px;"><strong>Clear</strong></span></ion-button>
+    <ion-button *ngIf="language=='EN'" slot="end" color="danger" style="width: 15%; height: auto; " [routerLink]="['/wallet']" routerLinkActive="router-link-active"     (click)="deleteeng()"><span style="color: white; padding: 5px;"><strong>Clear</strong></span></ion-button>
     <ion-button *ngIf="language=='TR'" slot="end" color="danger" style="width: 20%; height: auto; " [routerLink]="['/wallet']" routerLinkActive="router-link-active"  (click)="deletetr()"><span style="color: white; padding: 5px;"><strong>Temizle</strong></span></ion-button>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
 <ion-content>
 
    <!-- SATIN ALIM LİSTELEME -->
-   <ion-list *ngIf="language=='ENG'" style="margin-bottom: 15px;">
+   <ion-list *ngIf="language=='EN'" style="margin-bottom: 15px;">
     <h5 style="color: green; margin-left: 5%; "><u>PURCHASES</u></h5>
       <ion-item *ngFor="let info of historybuy" >
         <ion-avatar slot="start">
@@ -35,7 +35,7 @@
   </ion-list>
 
    <!-- SATIŞ LİSTELEME -->
-  <ion-list *ngIf="language=='ENG'">
+  <ion-list *ngIf="language=='EN'">
     <h5 style="color: red; margin-left: 5%; "><u>SOLD</u></h5>
       <ion-item *ngFor="let info of historysell" >
         <ion-avatar slot="start">

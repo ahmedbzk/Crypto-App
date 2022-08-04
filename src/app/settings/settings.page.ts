@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -8,12 +9,12 @@ import { ToastController } from '@ionic/angular';
 })
 export class SettingsPage implements OnInit {
   langtr:string='TR';
-  langeng:string='ENG';
+  langeng:string='EN';
   language:any=localStorage.getItem('language');
   public name:string;
   public localname=localStorage.getItem("title");
   checked:boolean=true;
-  constructor(public toastController: ToastController) { }
+  constructor(public toastController: ToastController, private router:Router) { }
 
   ngOnInit() {
     console.log(this.language)
@@ -49,6 +50,7 @@ export class SettingsPage implements OnInit {
     this.language=this.langtr;
     this.language=localStorage.setItem('language',this.language)
     console.log(this.language)
+    window.location.reload();
     this.uyari("Başarıyla dil değiştirdiniz","success")
     
   }
@@ -57,11 +59,16 @@ export class SettingsPage implements OnInit {
     this.language=this.langeng;
     this.language=localStorage.setItem('language',this.language)
     console.log(this.language)
+    window.location.reload();
     this.uyari("You have successfully changed language","success")
     
   }
 
-
+  walleta(){
+    this.router.navigate(['wallet'])
+      .then(() => {
+    });
+  }
 
 
   async uyari(mesaj,renk) {

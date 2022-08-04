@@ -11,7 +11,7 @@ export class StartPage implements OnInit {
   selectoption:string;
   title:string="";
   balance:number;
-  langone:string="ENG";
+  langone:string="EN";
   langtwo:string="TR";
   check:boolean=true;
 
@@ -39,7 +39,7 @@ export class StartPage implements OnInit {
       if(this.selectoption=="TR"){
         localStorage.setItem('language',this.selectoption);
       }
-      else if(this.selectoption=="ENG"){
+      else if(this.selectoption=="EN"){
         localStorage.setItem('language',this.selectoption);
       }
       localStorage.setItem('balance',JSON.stringify(this.balance));
@@ -71,7 +71,7 @@ export class StartPage implements OnInit {
       if(this.selectoption=="TR"){
         localStorage.setItem('language',this.selectoption);
       }
-      else if(this.selectoption=="ENG"){
+      else if(this.selectoption=="EN"){
         localStorage.setItem('language',this.selectoption);
       }
       localStorage.setItem('balance',JSON.stringify(this.balance));

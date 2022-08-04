@@ -3,23 +3,23 @@
     <ion-buttons slot="start" *ngIf="language=='TR'">
       <ion-back-button text="Geri"></ion-back-button>
     </ion-buttons>    
-    <ion-buttons slot="start" *ngIf="language=='ENG'">
+    <ion-buttons slot="start" *ngIf="language=='EN'">
       <ion-back-button ></ion-back-button>
     </ion-buttons>      
-    <ion-title *ngIf="language=='ENG'">Settings</ion-title>
+    <ion-title *ngIf="language=='EN'">Settings</ion-title>
     <ion-title *ngIf="language=='TR'">Ayarlar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-<div *ngIf="language=='ENG'">
+<div *ngIf="language=='EN'">
   <!-- LANGUAGE -->
   <ion-list>
     <ion-list-header style="color: white; background-color: rgb(37, 34, 34); ">Language</ion-list-header>
     <ion-item style="margin-top: 15px;">
       <ion-label>{{langtr}}</ion-label>
-      <ion-checkbox color="primary" slot="start" (click)="turntr()" [routerLink]="['/folder']" routerLinkActive="router-link-active" ></ion-checkbox>
+      <ion-checkbox color="primary" slot="start" (click)="turntr()" ></ion-checkbox>
       <img src="assets/turkey.png" alt="Turkey" style="height: 25px; position: absolute; margin-left: 85%;">
     </ion-item>
     <ion-item>
@@ -55,7 +55,7 @@
     </ion-item>
     <ion-item>
       <ion-label >{{langeng}}</ion-label>
-      <ion-checkbox color="primary"  slot="start"  (click)="turneng()" [routerLink]="['/folder']" routerLinkActive="router-link-active" ></ion-checkbox>
+      <ion-checkbox color="primary"  slot="start"  (click)="turneng()" ></ion-checkbox>
       <img src="assets/united-kingdom.png" alt="United Kingdom" style="height: 25px; position: absolute; margin-left: 85%;">
     </ion-item>
   </ion-list>
@@ -75,4 +75,72 @@
   </ion-button>
 </div>
 
+
+
 </ion-content>
+
+<ion-footer style="border-top: 1px solid grey; background-color: white" *ngIf="language=='EN'">
+  <div style="background-color: white;">
+    <ion-row>
+
+      <ion-col style="text-align: center;"  [routerLink]="['/folder']" routerLinkActive="router-link-active" >
+        <ion-icon name="home-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px;  color: black;"><strong>Home</strong></ion-label>
+
+      </ion-col>
+      <ion-col style="text-align: center; " >
+        <ion-icon name="search-sharp" style="font-size: 27px; margin-right: 15px; color: black;" [routerLink]="['/search']" routerLinkActive="router-link-active"></ion-icon><br>
+        <ion-label style="font-size: 10px; margin-right: 15px; color: black;"><strong>Search</strong></ion-label>
+      </ion-col>
+
+        <ion-col>
+          <div style="background-color: black; border-radius: 60%; height: 100%; text-align: center;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" >
+            <ion-icon name="logo-bitcoin" style="color: white; font-size: 40px; margin-top: 3px;"></ion-icon><br>
+          </div>
+        </ion-col>
+
+      <ion-col style="text-align: center"  >
+        <a (click)="walleta()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Wallet</strong></ion-label>
+      </ion-col>
+
+      <ion-col style="text-align: center"  >
+        <ion-icon name="settings-outline" style="font-size: 27px; color: blue;"></ion-icon><br>
+        <ion-label  style="font-size: 10px; color: blue;"><strong>Settings</strong></ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>
+
+<ion-footer style="border-top: 1px solid grey; background-color: white" *ngIf="language=='TR'">
+  <div style="background-color: white;">
+    <ion-row>
+
+      <ion-col style="text-align: center;"  [routerLink]="['/folder']" routerLinkActive="router-link-active" >
+        <ion-icon name="home-outline" style="font-size: 27px; color: black;"></ion-icon><br>
+        <ion-label style=" font-size: 10px;  color: black;"><strong>Anasayfa</strong></ion-label>
+
+      </ion-col>
+      <ion-col style="text-align: center; " >
+        <ion-icon name="search-sharp" style="font-size: 27px; margin-right: 15px; color: black;" [routerLink]="['/search']" routerLinkActive="router-link-active"></ion-icon><br>
+        <ion-label style="font-size: 10px; margin-right: 15px; color: black;"><strong>Arama</strong></ion-label>
+      </ion-col>
+
+        <ion-col>
+          <div style="background-color: black; border-radius: 60%; height: 100%; text-align: center;" [routerLink]="['/details/bitcoin']" routerLinkActive="router-link-active" >
+            <ion-icon name="logo-bitcoin" style="color: white; font-size: 40px; margin-top: 3px;"></ion-icon><br>
+          </div>
+        </ion-col>
+
+      <ion-col style="text-align: center"  >
+        <a (click)="walleta()"><ion-icon name="wallet-outline" style="font-size: 27px;  margin-left: 15px; color: black;"></ion-icon></a><br>
+        <ion-label style=" font-size: 10px; margin-left: 15px; color: black;"><strong>Cüzdan</strong></ion-label>
+      </ion-col>
+
+      <ion-col style="text-align: center"  >
+        <ion-icon name="settings-outline" style="font-size: 27px; color: blue;"></ion-icon><br>
+        <ion-label  style="font-size: 10px; color: blue;"><strong>Ayarlar</strong></ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

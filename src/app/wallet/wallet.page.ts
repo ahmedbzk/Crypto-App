@@ -95,10 +95,7 @@ export class WalletPage implements OnInit {
     }, 1000);
   }
 
-  history(){
-    
-    console.log("aa")
-  }
+ 
 
   refresh(){
     location.reload();
