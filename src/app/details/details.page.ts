@@ -85,6 +85,16 @@ export class DetailsPage implements OnInit {
       }else{
       this.balance=this.balance-(this.justcoininfo.current_price*this.count);
       localStorage.setItem('balance',JSON.stringify(this.balance));
+      this.historybuypage=[
+        ...this.historybuypage,
+        {
+          id: this.justcoininfo.id,
+          count: this.count,
+          current_price: this.justcoininfo.current_price,
+          img: this.justcoininfo.image
+        },
+      ]
+      localStorage.setItem('historybuy',JSON.stringify(this.historybuypage));
       var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
       if(checkWallet){
         checkWallet.amount += this.count;
@@ -98,7 +108,6 @@ export class DetailsPage implements OnInit {
           img: this.justcoininfo.image
         },
       ]}
-      localStorage.setItem("historybuy",JSON.stringify(this.wallet))
       localStorage.setItem("wallet",JSON.stringify(this.wallet))
       console.log(this.wallet);
       this.uyari(`You bought ${this.count} count ${this.justcoininfo.name}`,'success')
@@ -120,8 +129,17 @@ export class DetailsPage implements OnInit {
       }else{
       this.balance=this.balance-(this.justcoininfo.current_price*this.count);
       localStorage.setItem('balance',JSON.stringify(this.balance));
+      this.historybuypage=[
+        ...this.historybuypage,
+        {
+          id: this.justcoininfo.id,
+          count: this.count,
+          current_price: this.justcoininfo.current_price,
+          img: this.justcoininfo.image
+        },
+      ]
+      localStorage.setItem('historybuy',JSON.stringify(this.historybuypage));
       var checkWallet = this.wallet.find((a) => a.id === this.justcoininfo.id);
-      
       if(checkWallet){
         checkWallet.amount += this.count;
       }else{
